@@ -1,0 +1,10 @@
+---
+// Tooltip
+
+import './global-styles.css'
+const {tip} = Astro.props
+---
+
+<span class="tooltip" data-tip={tip}>
+    <slot />
+</span>

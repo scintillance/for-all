@@ -1,0 +1,70 @@
+curriculum in intro
+
+- basic unit circle identities
+
+- tangent
+
+- basic geo problems
+
+- basic identities & practice (alg focus)
+
+- inverse trig functions
+
+- see the graphs of sine and cos? or save for later (learn to graph later)
+    - REM the point is to start less challenging and get harder and harder later on!
+
+level up
+
+- remaining trig functions
+
+- nuances of inverse trig functions
+
+- harder trig in geo -- LoS, etc.
+
+- geo practice, with some identities
+
+- harder identities -- useful in alg and geo!
+    - eg chebyshev, sum to product, etc.
+
+- Brief touch on complex numbers (that should be separate)
+
+**features**
+
+- see also: eg radians, speck links
+    - Don't understand something? Don't worry! We've all been there; don't be discouraged. One of these resources can likely help: <speck, external links, etc.>.
+
+- summary! synopsis?, key ideas, key theorems
+
+- **do the problems** lol
+
+
+<div class="quote" style="margin-bottom: 70px;">“When I hear music, I fear no danger. I am invulnerable. I see no foe. I am related to the earliest times, and to the latest.” _Henry David Thoreau_</div>
+ when it was just * + p
+
+
+
+
+ 
+<T tip="2π radians is one full turn (360 degrees). In some sense, radians are the most &quot;mathematical&quot; unit of angle measurement. See more at the end of this post."><span style="color: var(--lighter-og-purple);">_What are radians?_</span></T>
+old type of tooltips
+
+
+import Disc from "../../components/testimg.astro"
+
+<Disc />
+
+
+
+
+TO DO
+
+*/ update names of components, organize
+* add footer
+* make heading responsive?
+* span square thing
+* better sidenotes, margin notes
+* add images
+* add demos
+* enumerate probs?
+* smart subdue? javascript in components?
+* themes? fonts?

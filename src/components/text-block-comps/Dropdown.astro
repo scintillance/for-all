@@ -1,0 +1,14 @@
+---
+// Sidenote dropdown
+
+import './global-styles.css'
+---
+
+<details class="dropdown spacing-as-p">
+    <summary class="dropdown-summary">
+        <slot name="name" />
+    </summary>
+    <div class="dropdown-content">
+        <slot />
+    </div>
+</details>
