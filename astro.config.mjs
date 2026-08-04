@@ -26,6 +26,10 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
+  site: 'https://scintillance.github.io',
+  
+  base: '/for-all',
+  
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],
