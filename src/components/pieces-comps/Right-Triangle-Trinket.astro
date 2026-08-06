@@ -1,0 +1,191 @@
+---
+import "/global-styles.css"; 
+---
+<style>
+.slider-container {
+  margin-bottom: 20px;
+  background-image: var(--gradient-panel);
+  box-shadow: var(--glow-shadow);
+
+  padding: 12px 30px 30px 30px;
+  border: 0px solid #fff;
+  border-radius: 60px;
+  
+  font-family: 'Space Mono', monospace;
+}
+#right-triangle-results {
+  flex: 1 1 240px;
+}
+.label { font-weight: bold; }
+.hyp { color: var(--red-label); }
+.opp { color: var(--green-label); }
+.adj { color: var(--purple-label); }
+@media screen and (max-width: 636px) {
+  .slider-container {
+    padding: .8em 1.4em 1.4em 1.4em;
+    margin-top: 1em;
+  }
+}
+</style>
+
+<!-- Main demo container -->
+<div class="contained-tab">trinket</div> 
+<div class="container offset underlay-background">
+  <span class="contained-title">right triangle demo</span>
+  
+  <!-- Angle slider -->
+  <div class="slider-container">
+    <label for="angleSlider">Angle (θ): <span id="angleValue">30</span></label>
+    <input type="range" id="angleSlider" min="1" max="89" value="30" step="1">
+  </div>
+
+  <!-- Window & text workspace -->
+  <div class="workspace">
+    
+    <!-- Triangle SVG window -->
+    <div class="grid" style="box-shadow: var(--glow-inset-shadow); border-radius: 50px; border: 0px solid #fff;">
+      <svg id="triangleSvg" width="100%" height="250" viewBox="0 0 300 250" style="background: transparent; display: block;">
+
+        <!-- Triangle path -->
+        <polygon id="triangle" points="" fill="var(--mint-trans)" stroke="var(--mint-title)" stroke-width="3" />
+        
+        <!-- Right angle mark -->
+        <path id="rightAngleMark" d="M 230 200 L 230 190 L 240 190" fill="none" stroke="var(--mint-title)" stroke-width="3"/>
+        
+        <!-- Text labels -->
+        <text id="lblHypotenuse" fill="var(--red-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle" dominant-baseline="middle">Hypotenuse</text>
+        <text id="lblOpposite" fill="var(--green-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="start">Opposite</text>
+        <text id="lblAdjacent" fill="var(--purple-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle">Adjacent</text>
+        <text id="lblTheta" fill="var(--og-black)" font-weight="bold" font-size="14">θ</text>
+      
+      </svg>
+    </div>
+      
+    <!-- Side Lengths & Ratios display -->
+    <div id="right-triangle-results" class="monospace-results">
+      <h2 class="contained-heading">Side Lengths & Ratios</h2>
+      <p><span class="label hyp">Hypotenuse:</span> <span id="valHyp">0.00</span></p>
+      <p><span class="label opp">Opposite:</span> <span id="valOpp">0.00</span></p>
+      <p><span class="label adj">Adjacent:</span> <span id="valAdj">0.00</span></p>
+      <hr class="spacing-as-monospace-results">
+      <p> <span class="opp">Opposite</span> / <span class="hyp">Hypotenuse</span> = <span id="ratioSin">0.00</span></p>
+      <p> <span class="adj">Adjacent</span> / <span class="hyp">Hypotenuse</span> = <span id="ratioCos">0.00</span></p>
+      <p> <span class="opp">Opposite</span> / <span class="adj">Adjacent</span> = <span id="ratioTan">0.00</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Container underneath with text -->
+<div class="container">
+  <p class="contained-paragraph">
+    <i>Welcome to this interactive demo!</i> Play around with the value of <i>θ</i>, an angle in a right triangle, to see how the lengths and the ratios between them change. Here, we fix the hypotenuse to have a length of 180. 
+  </p>
+</div>
+
+<script>
+(function() {
+  // --- DOM selectors ---
+  const slider = document.getElementById('angleSlider')! as HTMLInputElement;
+  const angleValue = document.getElementById('angleValue')!;
+  const triangle = document.getElementById('triangle')!;
+  
+  const lblHyp = document.getElementById('lblHypotenuse')!;
+  const lblOpp = document.getElementById('lblOpposite')!;
+  const lblAdj = document.getElementById('lblAdjacent')!;
+  const lblTheta = document.getElementById('lblTheta')!;
+
+  const valHyp = document.getElementById('valHyp')!;
+  const valOpp = document.getElementById('valOpp')!;
+  const valAdj = document.getElementById('valAdj')!;
+  const ratioSin = document.getElementById('ratioSin')!;
+  const ratioCos = document.getElementById('ratioCos')!;
+  const ratioTan = document.getElementById('ratioTan')!;
+  const mark = document.getElementById('rightAngleMark')!;
+
+  // Fixed hypotenuse length
+  const hypLength = 180; 
+
+  // SetAttribute helper function
+  function setAttr(element: Element, attr: string, value: string | number) {
+	element.setAttribute(attr, String(value));
+  } 
+
+  // --- Animation loop ---
+  function updateDemo() {
+    const degrees = parseInt(slider.value);
+    angleValue.textContent = `${degrees}°`;
+
+    // Calculate trig
+    const radians = degrees * (Math.PI / 180);
+    const sinValue = Math.sin(radians);
+    const cosValue = Math.cos(radians);
+    const tanValue = Math.tan(radians);
+    
+    // Calculate lengths of sides
+    const oppositeSide = hypLength * sinValue;
+    const adjacentSide = hypLength * cosValue;
+
+    // Coordinate math for triangle nodes
+    const thetaX = 50;
+    const thetaY = 200;
+    
+    const rightAngleX = thetaX + adjacentSide;
+    const rightAngleY = thetaY;
+    
+    const topX = rightAngleX;
+    const topY = rightAngleY - oppositeSide;
+
+    // Redraw triangle polygon
+    setAttr(triangle, 'points', `${thetaX},${thetaY} ${rightAngleX},${rightAngleY} ${topX},${topY}`);
+
+    // Redraw right angle (if there is enough space)
+    if ((degrees > 4) && (degrees < 86)) {
+      setAttr(mark, 'd', `M ${rightAngleX - 10} ${rightAngleY} L ${rightAngleX - 10} ${rightAngleY - 10} L ${rightAngleX} ${rightAngleY - 10}`);
+    } else {
+      setAttr(mark, 'd', "");
+    }
+    
+    // Update display
+    valHyp.textContent = hypLength.toFixed(0);
+    valOpp.textContent = oppositeSide.toFixed(0);
+    valAdj.textContent = adjacentSide.toFixed(0);
+
+    ratioSin.textContent = sinValue.toFixed(3);
+    ratioCos.textContent = cosValue.toFixed(3);
+    ratioTan.textContent = tanValue.toFixed(3);
+
+    // Position labels next to matching sides in SVG window
+    const hypMidX = (thetaX + topX) / 2;
+    const hypMidY = (thetaY + topY) / 2;
+    
+    setAttr(lblHyp, 'x', hypMidX);
+    setAttr(lblHyp, 'y', hypMidY);
+    
+    lblHyp.style.transform = `rotate(${-degrees}deg) translate(0px, -12px)`; // Rotate label of hypotenuse to match its angle
+    lblHyp.style.transformOrigin = `${hypMidX}px ${hypMidY}px`;
+    
+    setAttr(lblOpp, 'x', rightAngleX + 10);
+    setAttr(lblOpp, 'y', (topY + rightAngleY) / 2);
+
+    setAttr(lblAdj, 'x', (thetaX + rightAngleX) / 2);
+    setAttr(lblAdj, 'y', rightAngleY + 20);
+
+    // Position angle theta
+    setAttr(lblTheta, 'x', thetaX + cosValue * 50);
+    setAttr(lblTheta, 'y', Math.max(thetaY - 8, thetaY - sinValue * 10));
+    if (degrees < 12 || degrees > 86) {
+      setAttr(lblTheta, 'opacity', 0); // only show theta if there is enough space
+    } else {
+      setAttr(lblTheta, 'opacity', 1);
+    }
+  }
+
+  // Update screen when the slider changes
+  slider.addEventListener('input', updateDemo);
+  slider.addEventListener('change', updateDemo);
+
+  // Run once after the component has mounted so the initial state is drawn immediately
+  requestAnimationFrame(() => updateDemo());
+  
+})();
+</script>

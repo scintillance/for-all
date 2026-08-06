@@ -12,7 +12,9 @@ featuredimage: "../images/disc.png"
 
 Trig isn't as hard as it seems. Why don't you join me?
 
-<QUO>“When I hear music, I fear no danger. I am invulnerable. I see no foe. I am related to the earliest times, and to the latest.” _Henry David Thoreau_</QUO>
+<QUO>
+“When I hear music, I fear no danger. I am invulnerable. I see no foe. I am related to the earliest times, and to the latest.” _Henry David Thoreau_
+</QUO>
 
 ### the earliest times
 
@@ -20,7 +22,11 @@ We'll start with triangles. In fact, let's look at the easiest-to-measure triang
 
 \[a right triangle -- legs, hypotenuse labeled. (the hypotenuse is the longest, diagonal side)\]
 
+<RightTriangleTrinket/>
+
 Specifically, we want to relate the **angles** to the **sides**. For example, if we know a right triangle has shorter leg length of 2, and one angle of 30 degrees, what are the other angles and sides? Can we even determine them?
+
+<UnitCircleTrinket/>
 
 Well, think about this: scaling up or down a triangle both **keeps its angles** and **scales its sides by a common factor** <S>(these scaled triangles are called _similar triangles_)</S>. And one angle in a right triangle is already 90 degrees. Thus if you know one other angle, you can uniquely determine the right triangle up to this scaling (_similarity_). <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S>
 
@@ -33,11 +39,13 @@ Then, why don't we look at the **ratios** of sides? Let there be an angle x in a
 \[pic of above\]
 
 Then we can let the <V>**_sine_**</V> of angle x, or **sin x**, denote the ratio of the length of the <u>opposite</u> leg to the length of the <u>hypotenuse</u>.
+
 <RBW>
 $$ 
 \sin(x) = \frac{\text{opposite leg's length}}{\text{hypotenuse's length}}
 $$
 </RBW>
+
 \[pic with example: triangle with 30 degrees, shorter leg length of 2, hyp length of 4\]
 
 In the above example with our 30-degree right triangle, if we actually sat down and built a triangle with those measurements, it would have a hypotenuse of 4. Therefore we say $\sin (30^\circ) = \dfrac24 = \dfrac12$.
@@ -45,11 +53,13 @@ In the above example with our 30-degree right triangle, if we actually sat down 
 This makes sense to say because if we took any other right triangle with angle 30 degrees, and looked at the ratio of the length of the opposite leg to the length of the hypotenuse, we'd get 1/2. <S>_All the right triangles with an angle of 30 degrees are similar to each other---i.e., scaled versions of each other._</S> Thus <P>**each angle _x_ has exactly one ratio _sin_**</P>. This is just what we need!
 
 We can similarly define the <V>**_cosine_**</V> of angle x, **cos x**, to be the length ratio of the <u>adjacent</u> leg over the <u>hypotenuse</u>.
+
 <RBW>
 $$
 \cos(x)=\frac{\text{adjacent leg's length}}{\text{hypotenuse's length}}
 $$
 </RBW>
+
 \[pic of triangle with angle y, sides 3,4,5\]
 
 <DRP>
@@ -78,26 +88,25 @@ Note that this is a right triangle, so we can use our formulas for sin and cos. 
 We need to draw a right triangle, as before, with one angle of 45 degrees.
 
 But note: the two smaller angles in a right triangle have to add to 90 degrees <S>(so the whole thing adds to 180 degrees)</S>, meaning that if one angle measures 45 degrees, so does the other, and we have an <P>**isosceles**</P> right triangle. <S>(That's "base angles theorem"---2 equal angles in a triangle means 2 equal sides, which is what an isosceles triangle is.)</S>
-
+ 
 \[Image\]
 
 Then, since this is isosceles, the two legs have the same length. If we call it x, then by the Pythagorean theorem, the hypotenuse has length $\sqrt{x^2 + x^2}=\sqrt{2x^2} = x\sqrt{2}$ . (Or you might just recognize this configuration as the <P>$45^\circ\text{-}45^\circ\text{-}90^\circ$</P> triangle, which has sides in ratio $\text-x\text-x\sqrt2$.)
 
 Now we have all the info we need: $\sin 45^\circ = \dfrac{\text{opposite}}{\text{hypotenuse}} = \frac{x}{x\sqrt2} = \frac{1}{\sqrt2}$, and so is $\cos45^\circ = \dfrac{\text{adjacent}}{\text{hypotenuse}} = \frac{x}{x\sqrt2} = \frac{1}{\sqrt2}$. These are often written as $\frac{1}{\sqrt2}=\frac{\sqrt2}{\sqrt2\sqrt2}=\frac{\sqrt2}2$ to "rationalize the denominator".
 
-$$
-\sin45^\circ=\cos45^\circ=\dfrac{\sqrt2}2
-$$
-
-$$
-\sin\dfrac\pi4=\cos\dfrac\pi4=\dfrac{\sqrt2}2
-$$
+<RCT>
+$\sin45^\circ=\cos45^\circ=\dfrac{\sqrt2}2$
+<div slot="and"> 
+    $\sin\dfrac\pi4=\cos\dfrac\pi4=\dfrac{\sqrt2}2$
+</div>
+</RCT>
 
 <br/><S>PS: Remember, every triangle with an angle of 45 degrees has the same side ratios, so we could have just picked one that was convenient! For example, picking a triangle with legs of length 1 would lead us to get the hypotenuse as $\sqrt{1^2+1^2}=\sqrt2$ and our sin and cos values would be $\frac{1}{\sqrt2}=\frac{\sqrt2}2$, as before.</S>
 </SOL>
 
 <PRB>
-**3<Challenge/>.** Calculate $\sin(30^\circ)$ and $\cos(30^\circ)$. What about $\sin(60^\circ)$ and $\cos(60^\circ)$?
+**3<Challenge/>.** Calculate $\sin(30^\circ)$ and $\cos(30^\circ)$. What about $\sin(60^\circ)$ and $\cos(60^\circ)$? 
 </PRB>
 
 <HNT>
@@ -125,13 +134,13 @@ We don't need both triangles, so let's focus on $\triangle ACD$. Specifically, w
 
 And focusing on the 60 degree angle in $\triangle ACD$, we get $\sin(60^\circ)=\frac{AD}{AC}=\frac{\sqrt3}{2}$ and $\cos(60^\circ)=\frac{CD}{AC}=\frac{1}{2}$. I hope you see it is no coincidence that we get repeat values! Here, $\sin(30^\circ)=\cos(60^\circ)$ and $\sin(60^\circ)=\cos(30^\circ)$. _We're finding the same ratio, just from a different perspective._ In general, <P>**sin(x) = cos(90-x) and cos(x) = sin(90-x)**</P>. <S>_This is why it's called the "co"sine --- it is the sine of the "co"mplementary angle! (Complementary angles, recall, add up to 90 degrees.)_</S>
 
-$$
-\sin30^\circ=\dfrac{1}2,\quad\sin60^\circ=\dfrac{\sqrt3}2\\ \cos30^\circ=\dfrac{\sqrt3}2,\quad \cos60^\circ=\dfrac12
-$$
+<RCT>
+$$\sin30^\circ=\dfrac{1}2,\quad\sin60^\circ=\dfrac{\sqrt3}2\\ \cos30^\circ=\dfrac{\sqrt3}2,\quad \cos60^\circ=\dfrac12$$
+<div slot="and">
+    $\sin\dfrac\pi 6=\dfrac{1}2,\quad\sin\dfrac\pi3=\dfrac{\sqrt3}2\\ \cos\dfrac\pi6=\dfrac{\sqrt3}2,\quad \cos\dfrac\pi3=\dfrac12$
+</div>
+</RCT>
 
-$$
-\sin\dfrac\pi 6=\dfrac{1}2,\quad\sin\dfrac\pi3=\dfrac{\sqrt3}2\\ \cos\dfrac\pi6=\dfrac{\sqrt3}2,\quad \cos\dfrac\pi3=\dfrac12
-$$
 <br/><S>
 PS: There is another nice way to go about this that involves drawing the _median_ of the $30^\circ\text{-}60^\circ\text{-}90^\circ$ triangle from the right angle. (A median is a segment that goes from one vertex of a triangle to the midpoint of the opposite side.) If you wish, see if you can do it that way.
 
@@ -142,7 +151,7 @@ Finally, as a challenge to all those who are getting bored of me yapping, try an
 </SOL>
 
 <PRB>
-<Key/> **4<Challenge/>.** Prove $\sin^2x + \cos^2x=1$. <S>(By the way, $(\sin(x))^2$, the square of $\sin x$, is written $\sin^2x$.) <Note>That is, prove that for all angles $x$ (where x is strictly between $0^\circ$ and $90^\circ$), this relation holds.</Note></S>
+<Key/> **4<Challenge/>.** Prove $\sin^2x + \cos^2x=1$. <S><Note>That is, prove that for all angles $x$ (where x is strictly between $0^\circ$ and $90^\circ$), this relation holds.</Note> (By the way, $(\sin(x))^2$, the square of $\sin x$, is written $\sin^2x$.)</S>
 </PRB>
 
 <HNT>
@@ -160,7 +169,9 @@ Putting it all together: $\sin^2 x+\cos^2x=\left(\frac{BC}{AB}\right)^2 + \left(
 
 _Alternatively_, we could simply say, "Without loss of generality, let AB = 1" since sine and cosine do not depend on what the exact values of the sides are, just the ratios between them. In other words, **we _fix_ the hypotenuse to be 1**, so that $\text{opposite}^2 + \text{adjacent}^2=1^2=1$ by Pythag. And we know $\sin x=\text{opposite}/1=\text{opposite}$ and $\cos x=\text{adjacent}/1=\text{adjacent}$. So $\sin^2x+\cos^2x=1$. Simple as that!
 
-The **Pythagorean Identity**: $\sin^2(x)+\cos^2(x)=1$
+<RCT>
+The <V>**Pythagorean Identity**</V>: $\sin^2(x)+\cos^2(x)=1$
+</RCT>
 
 I cannot stress how important this identity is. It shows up again and again!
 </SOL>

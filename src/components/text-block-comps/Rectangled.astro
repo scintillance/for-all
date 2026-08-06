@@ -1,0 +1,14 @@
+---
+// Rectangular callout with two flex sections (second optional)
+import "/global-styles.css"; 
+---
+
+<div class="flex-row-center-stretch spacing-as-p">
+    <div class="rectangle-section-main">
+        <slot />
+    </div>
+
+    <div class="rectangle-section-subdued">
+        <slot name="and" />
+    </div>
+</div>

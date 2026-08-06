@@ -49,12 +49,16 @@ export default defineConfig({
         { 
           './src/components/bits-comps/Horizontal-Bar.astro': [['default', 'Bar']],
 
+          './src/components/pieces-comps/Right-Triangle-Trinket.astro': [['default', 'RightTriangleTrinket']],
+          './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
+
           './src/components/text-bits-comps/Tooltip-Challenge.astro': [['default', 'Challenge']],
           './src/components/text-bits-comps/Tooltip-Formally.astro': [['default', 'Formally']],
           './src/components/text-bits-comps/Tooltip-Key.astro': [['default', 'Key']],
           './src/components/text-bits-comps/Tooltip-Note.astro': [['default', 'Note']],
 
           './src/components/text-block-comps/Dropdown.astro': [['default', 'DRP']],
+          './src/components/text-block-comps/Rectangled.astro': [['default', 'RCT']],
           './src/components/text-block-comps/Hint.astro': [['default', 'HNT']],
           './src/components/text-block-comps/Problem.astro': [['default', 'PRB']],
           './src/components/text-block-comps/Quote.astro': [['default', 'QUO']],
@@ -66,7 +70,7 @@ export default defineConfig({
           './src/components/text-inline-comps/Tooltip.astro': [['default', 'T']],
           './src/components/text-inline-comps/Tooltip-new.astro': [['default', 'Tn']],
           './src/components/text-inline-comps/Vocab.astro': [['default', 'V']],
-          
+
         }
       ],
     }),

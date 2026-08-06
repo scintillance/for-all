@@ -1,0 +1,450 @@
+---
+import "/global-styles.css"; 
+---
+<style>
+.thetaDisplayText {
+	color: var(--yellow);
+}
+.cosDisplayText {
+	color: var(--blue-text);
+}
+.sinDisplayText {
+	color: var(--red-text);
+}
+</style>
+
+<!-- Main container -->
+<div class="contained-tab">trinket</div>
+<div class="container offset underlay-background">
+	
+	<!-- Title -->
+	<span class="contained-title">unit circle demo</span>
+
+	<!-- Workspace with SVG canvas & math results display -->
+	<div class="workspace">
+
+	<!-- Circle SVG canvas -->
+	<div class="capsule" style="max-width: 320px; margin: 20px auto; box-shadow: var(--glow-inset-shadow);">
+		<svg id="circleSvg" width="100%" height="300" viewBox="0 0 300 300"style="background: transparent; display: block;">
+
+		<!-- Coordinate axes -->
+		<line x1="150" y1="20" x2="150" y2="280" stroke="var(--blue-title)" stroke-dasharray="4" />
+		<line x1="20" y1="150" x2="280" y2="150" stroke="var(--blue-title)" stroke-dasharray="4" />
+
+		<!-- Unit circle -->
+		<circle cx="150" cy="150" r="100" fill="none" stroke="var(--navy)" stroke-width="2" />
+
+		<!-- Theta angle -->
+		<path id="thetaAngle" d="" fill="none" stroke="var(--yellow)" stroke-width="2" />
+
+		<!-- Theta vectors-->
+		<line id="thetaMovingVector" x1="150" y1="150" stroke="var(--yellow)" stroke-width="2" />
+		<line id="thetaStationaryVector" x1="150" y1="150" x2="250" y2="150" stroke="var(--yellow)" stroke-width="2" />
+		
+		<!-- Reference triangle -->
+		<polygon id="referenceTriangle" fill="var(--mint-trans)" stroke="var(--mint-title)" stroke-width="2" />
+
+		<!-- Right angle mark -->
+		<line id="rightAngleMarkHorizontal" x1="150" y1="150" x2="150" y2="150" stroke="var(--mint-title)" stroke-width="2" stroke-linecap="round" />
+		<line id="rightAngleMarkVertical" x1="150" y1="150" x2="150" y2="150" stroke="var(--mint-title)" stroke-width="2" stroke-linecap="round" />
+		
+		<!-- Unit circle node -->
+		<circle id="unitCircleNode" r="10" fill="var(--blue-title)" stroke="#fff" stroke-width="2" class="circle-point" />
+
+		<!-- Cosine node -->
+		<circle id="cosNode" cy="25" r="7" fill="var(--blue-text)" stroke="#fff" stroke-width="1" class="circle-point" />
+		
+		<!-- Sine node -->
+		<circle id="sinNode" cx="290" r="7" fill="var(--red-label)" stroke="#fff" stroke-width="1" class="circle-point" />
+
+		<!-- Text labels -->
+		<text id="lblRadius" class="unHighlightable" fill="var(--yellow)" font-weight="bold" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">1</text>
+		<text id="lblThetaAngle" class="unHighlightable" fill="var(--yellow)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono"></text>
+		<text id="lblCos" class="unHighlightable" y="25" fill="var(--blue-text)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">1.000</text>
+		<text id="lblSin" class="unHighlightable" x="280" fill="var(--red-label)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">0.000</text>
+		
+		</svg>
+	</div>
+
+	<!-- Math results & checkboxes -->
+	<div class="monospace-results-2">
+		
+		<p><strong>Angle: <span class="thetaDisplayText">θ</span> = </strong> <span id="angleDisplay"></span></p>
+		<p><strong>x = <span class="cosDisplayText">cos(θ)</span> = </strong> <span id="cosDisplay"></span></p>
+		<p><strong>y = <span class="sinDisplayText">sin(θ)</span> =</strong> <span id="sinDisplay"></span></p>
+		
+		<label for="showLabelsCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<input type="checkbox" id="showLabelsCheckbox" checked> Show Labels
+		</label>
+		
+		<label for="showTriangleCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<input type="checkbox" id="showTriangleCheckbox" checked> Show Reference Triangle
+		</label>
+
+		<label for="autoSpinCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<input type="checkbox" id="autoSpinCheckbox"> Automatically rotate
+		</label>
+
+	</div>
+	
+	</div>
+</div>
+
+<script>
+// Add graphs?
+
+let isShowLabels = true;
+let isAutoSpin = false;
+let animationId: number;
+let currentInternalAngle = 0;
+
+(function() {
+	// ---------------- DOM selectors ----------------
+	const circleSvg = document.getElementById('circleSvg')!;
+	
+	const thetaAngle = document.getElementById('thetaAngle')!;
+	const thetaMovingVector = document.getElementById('thetaMovingVector')!;
+	const triangle = document.getElementById('referenceTriangle')!;
+	const rightAngleMarkHorizontal = document.getElementById('rightAngleMarkHorizontal')!;
+	const rightAngleMarkVertical = document.getElementById('rightAngleMarkVertical')!;
+
+	const unitCircleNode = document.getElementById('unitCircleNode')!;
+	const cosNode = document.getElementById('cosNode')!;
+	const sinNode = document.getElementById('sinNode')!;
+	
+	const lblRadius = document.getElementById('lblRadius')!;
+	const lblThetaAngle = document.getElementById('lblThetaAngle')!;
+	const lblCos = document.getElementById('lblCos')!;
+	const lblSin = document.getElementById('lblSin')!;
+	
+	const angleDisplay = document.getElementById('angleDisplay')!;
+	const cosDisplay = document.getElementById('cosDisplay')!;
+	const sinDisplay = document.getElementById('sinDisplay')!;
+	const showLabelsCheckbox = document.getElementById('showLabelsCheckbox')! as HTMLInputElement;
+	const showTriangleCheckbox = document.getElementById('showTriangleCheckbox')! as HTMLInputElement;
+	const autoSpinCheckbox = document.getElementById('autoSpinCheckbox')! as HTMLInputElement;
+
+	// Hardcoded info
+	const cx = 150;
+	const cy = 150;
+	const radius = 100;
+
+	// Booleans to track if dragging nodes
+	let isDraggingUnitCircleNode = false;
+	let isDraggingCosNode = false;
+	let isDraggingSinNode = false;
+	let isThetaLargeEnough = false;
+
+	// ---------------- LISTENERS ----------------
+	// DRAGGING UNIT CIRCLE NODE (note mobile equivalents)
+	// Holding down node
+	unitCircleNode.addEventListener('mousedown', () => isDraggingUnitCircleNode = true);
+	window.addEventListener('mouseup', () => isDraggingUnitCircleNode = false);
+	unitCircleNode.addEventListener('touchstart', (e) => {
+		isDraggingUnitCircleNode = true;
+		e.preventDefault(); // Prevents phone screen from scrolling down while dragging
+	});
+	window.addEventListener('touchend', () => isDraggingUnitCircleNode = false);
+	// Moving node
+	window.addEventListener('mousemove', dragUnitCircleEngine);
+	window.addEventListener('touchmove', dragUnitCircleEngine, { passive: false });
+
+	// DRAGGING SINE NODE
+	// Holding down node
+	sinNode.addEventListener('mousedown', () => isDraggingSinNode = true);
+	window.addEventListener('mouseup', () => isDraggingSinNode = false);
+	sinNode.addEventListener('touchstart', (e) => {
+		isDraggingSinNode = true;
+		e.preventDefault(); // Prevents phone screen from scrolling down while dragging
+	});
+	window.addEventListener('touchend', () => isDraggingSinNode = false);
+	// Moving node
+	window.addEventListener('mousemove', dragSinEngine);
+	window.addEventListener('touchmove', dragSinEngine, { passive: false });
+
+	// DRAGGING COSINE NODE
+	// Holding down node
+	cosNode.addEventListener('mousedown', () => isDraggingCosNode = true);
+	window.addEventListener('mouseup', () => isDraggingCosNode = false);
+	cosNode.addEventListener('touchstart', (e) => {
+		isDraggingCosNode = true;
+		e.preventDefault(); // Prevents phone screen from scrolling down while dragging
+	});
+	window.addEventListener('touchend', () => isDraggingCosNode = false);
+	// Moving node
+	window.addEventListener('mousemove', dragCosEngine);
+	window.addEventListener('touchmove', dragCosEngine, { passive: false });
+
+	// CHECKED "SHOW LABELS"
+	showLabelsCheckbox.addEventListener('change', () => {
+		isShowLabels = showLabelsCheckbox.checked;
+		
+		if (isShowLabels) {
+			setAttr(lblRadius, 'opacity', 1);
+			setAttr(lblCos, 'opacity', 1);
+			setAttr(lblSin, 'opacity', 1);
+			setAttr(thetaAngle, 'opacity', 1);
+			if (isThetaLargeEnough) {
+				setAttr(lblThetaAngle, 'opacity', 1);
+			}
+		} else {
+			setAttr(lblRadius, 'opacity', 0);
+			setAttr(lblCos, 'opacity', 0);
+			setAttr(lblSin, 'opacity', 0);
+			setAttr(thetaAngle, 'opacity', 0);
+			setAttr(lblThetaAngle, 'opacity', 0);
+		}
+	});
+
+	
+	// CHECKED "SHOW REFERENCE TRIANGLE"
+	showTriangleCheckbox.addEventListener('change', () => {
+		const isShowTriangle = showTriangleCheckbox.checked;
+		// if (isShowTriangle) {
+		// 	setAttr(triangle, 'opacity', 1);
+		// 	setAttr(rightAngleMark, 'opacity', 1);
+		// } else {
+		// 	setAttr(triangle, 'opacity', 0);
+		// 	setAttr(rightAngleMark, 'opacity', 0);
+		// }
+		isShowTriangle? setAttr(triangle, 'opacity', 1): setAttr(triangle, 'opacity', 0);
+		isShowTriangle? setAttr(rightAngleMarkHorizontal, 'opacity', 1): setAttr(rightAngleMarkHorizontal, 'opacity', 0);
+		isShowTriangle? setAttr(rightAngleMarkVertical, 'opacity', 1): setAttr(rightAngleMarkVertical, 'opacity', 0);
+	});
+
+	// CHECKED "AUTOMATICALLY ROTATE"
+	autoSpinCheckbox.addEventListener('change', () => {
+		isAutoSpin = autoSpinCheckbox.checked;
+
+		if (isAutoSpin) {
+			// Start animation
+			animationId = requestAnimationFrame(spinLoop);
+		} else {
+			// Halt animation
+			cancelAnimationFrame(animationId);
+		}
+	});
+
+	// ---------------- EVENT LOOP ----------------
+	// SetAttribute helper function
+	function setAttr(element: Element, attr: string, value: string | number) {
+		element.setAttribute(attr, String(value));
+	} 
+ 
+	// WHEN AUTO-SPIN CHECKED
+	function spinLoop() {
+		if (!isAutoSpin) return; // Do not run if auto-spin box is unchecked
+
+		// Adjust current angle a bit by some speed each frame
+		const speed = 0.005; 
+		currentInternalAngle -= speed;
+
+		// Makre sure internal angle doesn't go negative
+		if (currentInternalAngle < 0) {
+			currentInternalAngle += Math.PI * 2;
+		}
+
+		// Update screen
+		updateNodesAndDisplay();
+
+		// Keep running animation once started
+		animationId = requestAnimationFrame(spinLoop);
+		}
+
+	// MAKE SURE INTERNAL ANGLE IS ALWAYS POSITIVE
+	function makeAnglePositive(radians: number) {
+		if (radians < 0) {
+			return radians + 2 * Math.PI;
+		}
+		return radians;
+	}
+	
+	// WHEN COSINE NODE DRAGGED
+	function dragCosEngine(event: MouseEvent | TouchEvent) {
+		if (!isDraggingCosNode) return; // Do not run if not dragging the cos node
+
+		// Extract the raw screen pixel coordinates of the circle SVG box
+		const rect = circleSvg.getBoundingClientRect();    
+		let clientX: number;
+		let clientY: number;
+		if ('touches' in event) {
+			clientX = event.touches[0].clientX;
+			clientY = event.touches[0].clientY;
+		} else {
+			clientX = event.clientX;
+			clientY = event.clientY;
+		}
+		// Convert global screen cursor coordinates into internal local SVG map pixels
+		const mouseX = ((clientX - rect.left) / rect.width) * 300;
+		const mouseY = ((clientY - rect.top) / rect.height) * 300;
+		
+		// Force cos node point to stay on horizontal track (bound between 50 and 250)
+		const CosNodeX = Math.min(Math.max(mouseX, cy - radius), cy + radius);
+
+		// Calculate new angle based on x-position of cos node on track
+		let tempInternalAngle = makeAnglePositive(-Math.acos((CosNodeX - cx) / radius));
+		if (currentInternalAngle <= Math.PI && currentInternalAngle > 0) {
+			tempInternalAngle = - tempInternalAngle;
+		}
+		
+		// Update internal angle and screen
+		currentInternalAngle = makeAnglePositive(tempInternalAngle);
+		updateNodesAndDisplay();
+	}
+	
+	// WHEN SIN NODE DRAGGED
+	function dragSinEngine(event: MouseEvent | TouchEvent) {
+		if (!isDraggingSinNode) return; // Do not run if not dragging the sin node
+
+		// Extract the raw screen pixel coordinates of the circle SVG box
+		const rect = circleSvg.getBoundingClientRect();    
+		let clientX: number;
+		let clientY: number;
+		if ('touches' in event) {
+			clientX = event.touches[0].clientX;
+			clientY = event.touches[0].clientY;
+		} else {
+			clientX = event.clientX;
+			clientY = event.clientY;
+		}
+		// Convert global screen cursor coordinates into internal local SVG map pixels
+		const mouseX = ((clientX - rect.left) / rect.width) * 300;
+		const mouseY = ((clientY - rect.top) / rect.height) * 300;
+		
+		// Force sin node point to stay on vertical track (bound between 50 and 250)
+		const SinNodeY = Math.min(Math.max(mouseY, cx - radius), cx + radius);
+
+		// Calculate new angle based on y-position of sine node on track
+		let tempInternalAngle = Math.asin((SinNodeY - cy) / radius);
+		if (currentInternalAngle <= 3 * Math.PI / 2 && currentInternalAngle > Math.PI / 2) {
+			tempInternalAngle = Math.PI - tempInternalAngle;
+		}
+		
+		// Update internal angle and screen
+		currentInternalAngle = makeAnglePositive(tempInternalAngle);
+		updateNodesAndDisplay();
+	}
+	
+	// WHEN UNIT CIRCLE DRAGGED
+	function dragUnitCircleEngine(event: MouseEvent | TouchEvent) {
+		if (!isDraggingUnitCircleNode) return; // Do not run if not dragging the unit circle node
+		
+		// Extract the raw screen pixel coordinates of the circle SVG box
+		const rect = circleSvg.getBoundingClientRect();
+		let clientX: number;
+		let clientY: number;
+		if ('touches' in event) {
+			clientX = event.touches[0].clientX;
+			clientY = event.touches[0].clientY;
+		} else {
+			clientX = event.clientX;
+			clientY = event.clientY;
+		}
+		// Convert global screen cursor coordinates into internal local SVG map pixels
+		const mouseX = ((clientX - rect.left) / rect.width) * 300;
+		const mouseY = ((clientY - rect.top) / rect.height) * 300;
+
+		// Update internal angle and screen
+		currentInternalAngle = makeAnglePositive(Math.atan2(mouseY - cy, mouseX - cx));
+		updateNodesAndDisplay();
+	}
+
+	// UPDATE SCREEN: position of unit circle node & sine node; math display
+	function updateNodesAndDisplay() {
+
+		// Calculate current sine and cosine & the position on the unit circle
+		const currentCos = Math.cos(currentInternalAngle);
+		const currentSin = Math.sin(currentInternalAngle);
+		const x = cx + radius * currentCos;
+		const y = cy + radius * currentSin;
+		
+		// Update theta (moving) vector
+		setAttr(thetaMovingVector, 'x2', `${x}`);
+		setAttr(thetaMovingVector, 'y2', `${y}`);
+		
+		// Update theta angle
+		const thetaAngleX = cx + radius * currentCos / 10;
+		const thetaAngleY = cy + radius * currentSin / 10;
+		if (currentSin > 0) {
+			setAttr(thetaAngle, 'd', `M 160 150 A 10 10 0 1 0 ${thetaAngleX} ${thetaAngleY}`);
+		} else {
+			setAttr(thetaAngle, 'd', `M 160 150 A 10 10 0 0 0 ${thetaAngleX} ${thetaAngleY}`);
+		}
+
+		// Update reference triangle
+		setAttr(triangle, 'points', `${cx},${cy} ${x},${cy} ${x},${y}`);
+
+		// Update right angle mark
+		const markSize = 8;
+		const markX = currentCos > 0 ? x - markSize : x + markSize;
+		const markY = currentSin > 0 ? cy + markSize : cy - markSize;
+
+		setAttr(rightAngleMarkHorizontal, 'x1', x);
+		setAttr(rightAngleMarkHorizontal, 'y1', markY);
+		setAttr(rightAngleMarkHorizontal, 'x2', markX);
+		setAttr(rightAngleMarkHorizontal, 'y2', markY);
+
+		setAttr(rightAngleMarkVertical, 'x1', markX);
+		setAttr(rightAngleMarkVertical, 'y1', cy);
+		setAttr(rightAngleMarkVertical, 'x2', markX);
+		setAttr(rightAngleMarkVertical, 'y2', markY);
+		
+		// Update nodes
+		setAttr(unitCircleNode, 'cx', x);
+		setAttr(unitCircleNode, 'cy', y);
+		setAttr(sinNode, 'cy', y);
+		setAttr(cosNode, 'cx', x);
+		
+		// Update hypotenuse/radius "1" label
+		if (currentSin / currentCos > 0) {
+			setAttr(lblRadius, 'x', cx + (radius * Math.cos(currentInternalAngle + Math.PI / 15))/2);
+			setAttr(lblRadius, 'y', cy + (radius * Math.sin(currentInternalAngle + Math.PI / 15))/2);
+		} else {
+			setAttr(lblRadius, 'x', cx + (radius * Math.cos(currentInternalAngle - Math.PI / 15))/2);
+			setAttr(lblRadius, 'y', cy + (radius * Math.sin(currentInternalAngle - Math.PI / 15))/2);
+		}
+
+		// Update theta angle label
+		const internalHalfAngle = currentInternalAngle / 2 + Math.PI;
+		if (currentInternalAngle < 19 * Math.PI / 10 && currentInternalAngle > Math.PI) {
+			isThetaLargeEnough = true;
+			setAttr(lblThetaAngle, 'x', cx + radius * Math.cos(internalHalfAngle) / 4);
+			setAttr(lblThetaAngle, 'y', cy + radius * Math.sin(internalHalfAngle) / 4);
+		} else if (currentInternalAngle <= Math.PI && currentInternalAngle > 0) {
+			isThetaLargeEnough = true;
+			setAttr(lblThetaAngle, 'x', cx + radius * Math.cos(internalHalfAngle) / 4);
+			setAttr(lblThetaAngle, 'y', cy + radius * Math.sin(internalHalfAngle) / 4);
+		} else {
+			isThetaLargeEnough = false;
+		}
+		// if (isShowLabels && isThetaLargeEnough) {
+		// 	setAttr(lblThetaAngle, 'opacity', 1);
+		// } else {
+		// 	setAttr(lblThetaAngle, 'opacity', 0);
+		// }
+		isShowLabels && isThetaLargeEnough? setAttr(lblThetaAngle, 'opacity', 1): setAttr(lblThetaAngle, 'opacity', 0);
+
+		// Update cos label next to cos node
+		setAttr(lblCos, 'x', x + 35);
+		
+		// Update sin label next to sin node
+		setAttr(lblSin, 'y', y - 20);
+		
+		// Calulate and display the angle, cos, and sin in the math display and the canvas labels
+		let degrees = Math.round(-currentInternalAngle * (180 / Math.PI));
+		if (degrees < 0) { 
+			degrees += 360;
+		}
+		angleDisplay.textContent = `${degrees}°`;
+		lblThetaAngle.textContent = `${degrees}°`;
+		
+		cosDisplay.textContent = currentCos.toFixed(3);
+		lblCos.textContent = currentCos.toFixed(2);
+		
+		sinDisplay.textContent = (-currentSin).toFixed(3);
+		lblSin.textContent = (-currentSin).toFixed(2);
+	}
+
+	updateNodesAndDisplay();
+})();
+</script>
