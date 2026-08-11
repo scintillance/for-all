@@ -1,9 +1,19 @@
 ---
 // Problem
 
+if (!globalThis.__problemCounterMap) {
+    globalThis.__problemCounterMap = { problemCount: 0 };
+}
+globalThis.__problemCounterMap.problemCount++;
+const currentProblemCount = globalThis.__problemCounterMap.problemCount;
+
+
 import "/global-styles.css"; 
 ---
 
-<div class="problem spacing-as-p">
-    <slot />
+<div class="spacing-as-p">
+    <span class="problem-number spacing-as-nothing">{currentProblemCount}</span>
+    <div class="problem">
+        <slot />
+    </div>
 </div>

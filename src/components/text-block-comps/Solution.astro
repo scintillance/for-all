@@ -1,12 +1,13 @@
 ---
 // Solution
+const currentProblemCount = globalThis.__problemCounterMap.problemCount;
 
 import "/global-styles.css"; 
 ---
 
 <details class="solution spacing-as-p">
     <summary class="solution-summary">
-        solution
+        solution to problem {currentProblemCount}
     </summary>
     <div class="solution-content">
         <slot />

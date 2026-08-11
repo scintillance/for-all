@@ -1,12 +1,13 @@
 ---
 // Hint
+const currentProblemCount = globalThis.__problemCounterMap.problemCount;
 
 import "/global-styles.css"; 
 ---
 
 <details class="hint spacing-as-p">
     <summary class="hint-summary">
-        hint
+        hint to problem {currentProblemCount}
     </summary>
     <div class="hint-content">
         <slot />

@@ -16,17 +16,19 @@ Trig isn't as hard as it seems. Why don't you join me?
 “When I hear music, I fear no danger. I am invulnerable. I see no foe. I am related to the earliest times, and to the latest.” _Henry David Thoreau_
 </QUO>
 
-### the earliest times
 
-We'll start with triangles. In fact, let's look at the easiest-to-measure triangles: **_right triangles_**.
+### the earliest times
+<ASK>
+<span class="symbol">◿</span> 
+Right triangle trig 
+(intro to sin & cos)
+</ASK>
+
+We'll start with <u>triangles</u>. Let's look at the easiest-to-measure triangles: **_right triangles_**.
 
 \[a right triangle -- legs, hypotenuse labeled. (the hypotenuse is the longest, diagonal side)\]
 
-<RightTriangleTrinket/>
-
 Specifically, we want to relate the **angles** to the **sides**. For example, if we know a right triangle has shorter leg length of 2, and one angle of 30 degrees, what are the other angles and sides? Can we even determine them?
-
-<UnitCircleTrinket/>
 
 Well, think about this: scaling up or down a triangle both **keeps its angles** and **scales its sides by a common factor** <S>(these scaled triangles are called _similar triangles_)</S>. And one angle in a right triangle is already 90 degrees. Thus if you know one other angle, you can uniquely determine the right triangle up to this scaling (_similarity_). <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S>
 
@@ -34,11 +36,11 @@ Well, think about this: scaling up or down a triangle both **keeps its angles** 
 
 If we want to relate angles in right triangles to sides, we better do so in a way that doesn't matter on which size triangle we pick with that angle.
 
-Then, why don't we look at the **ratios** of sides? Let there be an angle x in a right triangle. Label the leg across, or opposite, from the angle as the "opposite leg". The closer leg is the "adjacent leg". And the longest side is the "hypotenuse".
+Then, why don't we look at the **ratios** of sides? Let there be an angle $x$ in a right triangle. Label the leg across, or opposite, from the angle as the <u>"opposite leg"</u>. The closer leg is the <u>"adjacent leg"</u>. And the longest side is the <u>"hypotenuse"</u>.
 
 \[pic of above\]
 
-Then we can let the <V>**_sine_**</V> of angle x, or **sin x**, denote the ratio of the length of the <u>opposite</u> leg to the length of the <u>hypotenuse</u>.
+Then we can let the <V>**_sine_**</V> of angle $x$, or **sin x**, denote the ratio of the length of the <u>opposite</u> leg to the length of the <u>hypotenuse</u>.
 
 <RBW>
 $$ 
@@ -48,9 +50,9 @@ $$
 
 \[pic with example: triangle with 30 degrees, shorter leg length of 2, hyp length of 4\]
 
-In the above example with our 30-degree right triangle, if we actually sat down and built a triangle with those measurements, it would have a hypotenuse of 4. Therefore we say $\sin (30^\circ) = \dfrac24 = \dfrac12$.
+In the above example with our 30-degree right triangle, if we actually sat down and built a triangle with those measurements, it would have a hypotenuse of $4$. Therefore we say $\sin (30^\circ) = \dfrac24 = \dfrac12$.
 
-This makes sense to say because if we took any other right triangle with angle 30 degrees, and looked at the ratio of the length of the opposite leg to the length of the hypotenuse, we'd get 1/2. <S>_All the right triangles with an angle of 30 degrees are similar to each other---i.e., scaled versions of each other._</S> Thus <P>**each angle _x_ has exactly one ratio _sin_**</P>. This is just what we need!
+This makes sense to say because if we took any other right triangle with angle $30^\circ$, and looked at the ratio of the length of the opposite leg to the length of the hypotenuse, we'd get $\frac12$. <S>_All the right triangles with an angle of 30 degrees are similar to each other---i.e., scaled versions of each other._</S> Thus <P>**each angle _x_ has exactly one ratio _sin_**</P>. This is just what we need!
 
 We can similarly define the <V>**_cosine_**</V> of angle x, **cos x**, to be the length ratio of the <u>adjacent</u> leg over the <u>hypotenuse</u>.
 
@@ -65,13 +67,15 @@ $$
 <DRP>
 <span slot="name"><Formally /></span>
 
-For any angle x, where $0<x<\pi/2$, we consider the right triangle ABC with $\angle A=x \ \text{radians}$ and $\angle C=\pi/2\ \text{radians}=90^\circ$. Then, we define the sine function ($\sin:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{BC}{AB}$ and the cosine function ($\cos:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{AC}{AB}$. <Tn> _What are radians?_ <span slot="tip">A unit of angle measurement common in more advance math. <b>$\mathbf{2\pi}$ radians is one full turn, that is, $\mathbf{360^\circ}$.</b><br/><br/>In some sense, radians are the most "mathematical" unit of angle measurement. See more at link at the end of this post!</span> </Tn>
+For any angle $x$, where $0<x<\pi/2$, we consider the right triangle ABC with $\angle A=x \ \text{radians}$ and $\angle C=\pi/2\ \text{radians}=90^\circ$. Then, we define the sine function ($\sin:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{BC}{AB}$ and the cosine function ($\cos:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{AC}{AB}$. <Tn> _What are <a href="https://www.mathsisfun.com/geometry/radians.html" target="_blank">radians</a>?_ <span slot="tip">A unit of angle measurement common in more advanced math. <b>$\mathbf{2\pi}$ radians is one full turn, that is, $\mathbf{360^\circ}$.</b><br/><br/>In some sense, radians are the most "mathematical" unit of angle measurement. Click the link on the word "radians" to see more!</span> </Tn>
 
 This is the simpler definition of sine and cosine for right triangle geometry. It will be expanded as we learn more!
 </DRP>
 
+<Spa height="4" />
+
 <PRB>
-**1.** In the triangle above, what is $\sin{y}$? What about $\cos{y}$?
+In the triangle above, what is $\sin{y}$? What about $\cos{y}$?
 </PRB>
 
 <SOL>
@@ -81,7 +85,7 @@ Note that this is a right triangle, so we can use our formulas for sin and cos. 
 </SOL>
 
 <PRB>
-**2.** Calculate $\sin(45^\circ)$ and $\cos(45^\circ)$. _You only need some basic geo knowledge for this!_
+Calculate $\sin(45^\circ)$ and $\cos(45^\circ)$. <S>_You only need some basic geo knowledge for this!_</S>
 </PRB>
 
 <SOL>
@@ -93,7 +97,7 @@ But note: the two smaller angles in a right triangle have to add to 90 degrees <
 
 Then, since this is isosceles, the two legs have the same length. If we call it x, then by the Pythagorean theorem, the hypotenuse has length $\sqrt{x^2 + x^2}=\sqrt{2x^2} = x\sqrt{2}$ . (Or you might just recognize this configuration as the <P>$45^\circ\text{-}45^\circ\text{-}90^\circ$</P> triangle, which has sides in ratio $\text-x\text-x\sqrt2$.)
 
-Now we have all the info we need: $\sin 45^\circ = \dfrac{\text{opposite}}{\text{hypotenuse}} = \frac{x}{x\sqrt2} = \frac{1}{\sqrt2}$, and so is $\cos45^\circ = \dfrac{\text{adjacent}}{\text{hypotenuse}} = \frac{x}{x\sqrt2} = \frac{1}{\sqrt2}$. These are often written as $\frac{1}{\sqrt2}=\frac{\sqrt2}{\sqrt2\sqrt2}=\frac{\sqrt2}2$ to "rationalize the denominator".
+Now we have all the info we need: $\sin 45^\circ = \dfrac{\text{opposite}}{\text{hypotenuse}} = \dfrac{x}{x\sqrt2} = \dfrac{1}{\sqrt2}$, and so is $\cos45^\circ = \dfrac{\text{adjacent}}{\text{hypotenuse}} = \dfrac{x}{x\sqrt2} = \dfrac{1}{\sqrt2}$. These are often written as $\dfrac{1}{\sqrt2}=\dfrac{\sqrt2}{\sqrt2\sqrt2}=\dfrac{\sqrt2}2$ to "rationalize the denominator".
 
 <RCT>
 $\sin45^\circ=\cos45^\circ=\dfrac{\sqrt2}2$
@@ -106,7 +110,7 @@ $\sin45^\circ=\cos45^\circ=\dfrac{\sqrt2}2$
 </SOL>
 
 <PRB>
-**3<Challenge/>.** Calculate $\sin(30^\circ)$ and $\cos(30^\circ)$. What about $\sin(60^\circ)$ and $\cos(60^\circ)$? 
+<Challenge/> Calculate $\sin(30^\circ)$ and $\cos(30^\circ)$. What about $\sin(60^\circ)$ and $\cos(60^\circ)$? 
 </PRB>
 
 <HNT>
@@ -126,13 +130,13 @@ An equilateral triangle has three equal sides, so it has three equal angles, whi
 
 Now let's assume the equilateral triangle has side length 2. <S>(Again, we could use a variable, like x, but no need because we are finding _ratios_ anyways.)</S> Therefore the length of the hypotenuses of the two right triangles we've made is 2. ($AB=AC=2$.)
 
-The height split the equilateral triangle perfectly in two, so the short legs of the two right triangles have length 1/2 of 2, or 1. ($BD=CD=1$.) <S>(More formally, we might say the _altitude_ of an equilateral triangle coincides with its _median_, so the perpendicular from vertex A, $AD$, is also the median from A, i.e. D is a midpoint of $BC$.)</S>
+The height split the equilateral triangle perfectly in two, so the short legs of the two right triangles have length $\frac12$ of $2$, or $1$. ($BD=CD=1$.) <S>(More formally, we might say the _altitude_ of an equilateral triangle coincides with its _median_, so the perpendicular from vertex $A$, $AD$, is also the median from $A$, i.e. D$ is a midpoint of $BC$.)</S>
 
 Finally, we use Pythag to determine the longer leg of these two triangles: $\sqrt{2^2-1^2}=\sqrt{4-1}=\sqrt3$.
 
-We don't need both triangles, so let's focus on $\triangle ACD$. Specifically, we'll focus on the 30 degree angle to get the sine and cosine of 30 degrees. Can you see on the diagram that $\sin(30^\circ)=\frac{CD}{AC}=\frac12$?And $\cos(30^\circ)=\frac{AD}{AC}=\frac{\sqrt3}{2}$?
+We don't need both triangles, so let's focus on $\triangle ACD$. Specifically, we'll focus on the $30^\circ$ angle to get the sine and cosine of $30$ degrees. Can you see on the diagram that $\sin(30^\circ)=\dfrac{CD}{AC}=\frac12$? And $\cos(30^\circ)=\dfrac{AD}{AC}=\dfrac{\sqrt3}{2}$?
 
-And focusing on the 60 degree angle in $\triangle ACD$, we get $\sin(60^\circ)=\frac{AD}{AC}=\frac{\sqrt3}{2}$ and $\cos(60^\circ)=\frac{CD}{AC}=\frac{1}{2}$. I hope you see it is no coincidence that we get repeat values! Here, $\sin(30^\circ)=\cos(60^\circ)$ and $\sin(60^\circ)=\cos(30^\circ)$. _We're finding the same ratio, just from a different perspective._ In general, <P>**sin(x) = cos(90-x) and cos(x) = sin(90-x)**</P>. <S>_This is why it's called the "co"sine --- it is the sine of the "co"mplementary angle! (Complementary angles, recall, add up to 90 degrees.)_</S>
+And focusing on the $60^\circ$ angle in $\triangle ACD$, we get $\sin(60^\circ)=\dfrac{AD}{AC}=\dfrac{\sqrt3}{2}$ and $\cos(60^\circ)=\dfrac{CD}{AC}=\frac{1}{2}$. I hope you see it is no coincidence that we get repeat values! Here, $\sin(30^\circ)=\cos(60^\circ)$ and $\sin(60^\circ)=\cos(30^\circ)$. _We're finding the same ratio, just from a different perspective._ <BTW_R>In general, <P>**sin(x) = cos(90-x) and cos(x) = sin(90-x)**</P>. <Fragment slot="btw"><S>_This is why it's called the "co"sine --- it is the sine of the "co"mplementary angle! (Complementary angles, recall, add up to 90 degrees.)_</S></Fragment></BTW_R>
 
 <RCT>
 $$\sin30^\circ=\dfrac{1}2,\quad\sin60^\circ=\dfrac{\sqrt3}2\\ \cos30^\circ=\dfrac{\sqrt3}2,\quad \cos60^\circ=\dfrac12$$
@@ -151,23 +155,23 @@ Finally, as a challenge to all those who are getting bored of me yapping, try an
 </SOL>
 
 <PRB>
-<Key/> **4<Challenge/>.** Prove $\sin^2x + \cos^2x=1$. <S><Note>That is, prove that for all angles $x$ (where x is strictly between $0^\circ$ and $90^\circ$), this relation holds.</Note> (By the way, $(\sin(x))^2$, the square of $\sin x$, is written $\sin^2x$.)</S>
+<Key/><Challenge/> Prove $\sin^2x + \cos^2x=1$.<S><Note>That is, prove that for all angles $x$ (where x is strictly between $0^\circ$ and $90^\circ$), this relation holds.</Note><BTW_R>By the way...<Fragment slot="btw">Note that $(\sin(x))^2$, the square of $\sin x$, is written $\sin^2x$.</Fragment></BTW_R></S>
 </PRB>
 
 <HNT>
-Draw a right triangle with a general angle of x and a hypotenuse of 1. Use Pythag.
+Draw a right triangle with a general angle of $x$ and a hypotenuse of $1$. Use Pythag.
 </HNT>
 
 <SOL>
-We draw a general right triangle, $\triangle ABC$, with right angle at vertex C, angle $x$ at vertex A, and angle $90^\circ-x$ at vertex B.
+We draw a general right triangle, $\triangle ABC$, with right angle at vertex $C$, angle $x$ at vertex $A$, and angle $90^\circ-x$ at vertex $B$.
 
 \[Image\]
 
-Then $\sin x=\frac{BC}{AB}$ and $\cos x=\frac{AC}{AB}$. Also, Pythag tells us that the sum of the squares of the leg lengths equals the square of the hypotenuse length: i.e., $AC^2+BC^2=AB^2$.
+Then $\sin x=\dfrac{BC}{AB}$ and $\cos x=\dfrac{AC}{AB}$. Also, Pythag tells us that the sum of the squares of the leg lengths equals the square of the hypotenuse length: i.e., $AC^2+BC^2=AB^2$.
 
-Putting it all together: $\sin^2 x+\cos^2x=\left(\frac{BC}{AB}\right)^2 + \left(\frac{AC}{AB}\right)^2 = \frac{BC^2}{AB^2}+\frac{AC^2}{AB^2}=\frac{BC^2+AC^2}{AB^2}$, which, by Pythag, equals $\frac{AB^2}{AB^2}=1$. So $\sin^2x+\cos^2x=1$. Yay!
+Putting it all together: $\sin^2 x+\cos^2x=\left(\dfrac{BC}{AB}\right)^2 + \left(\dfrac{AC}{AB}\right)^2 = \dfrac{BC^2}{AB^2}+\dfrac{AC^2}{AB^2}=\dfrac{BC^2+AC^2}{AB^2}$, which, by Pythag, equals $\dfrac{AB^2}{AB^2}=1$. So $\sin^2x+\cos^2x=1$. Yay!
 
-_Alternatively_, we could simply say, "Without loss of generality, let AB = 1" since sine and cosine do not depend on what the exact values of the sides are, just the ratios between them. In other words, **we _fix_ the hypotenuse to be 1**, so that $\text{opposite}^2 + \text{adjacent}^2=1^2=1$ by Pythag. And we know $\sin x=\text{opposite}/1=\text{opposite}$ and $\cos x=\text{adjacent}/1=\text{adjacent}$. So $\sin^2x+\cos^2x=1$. Simple as that!
+_Alternatively_, we could simply say, "Without loss of generality, let $AB = 1$" since sine and cosine do not depend on what the exact values of the sides are, just the ratios between them. In other words, **we _fix_ the hypotenuse to be 1**, so that $\text{opposite}^2 + \text{adjacent}^2=1^2=1$ by Pythag. And we know $\sin x=\text{opposite}/1=\text{opposite}$ and $\cos x=\text{adjacent}/1=\text{adjacent}$. So $\sin^2x+\cos^2x=1$. Simple as that!
 
 <RCT>
 The <V>**Pythagorean Identity**</V>: $\sin^2(x)+\cos^2(x)=1$
@@ -216,16 +220,20 @@ Here is our new definition of sine and cosine:
 
 For any angle $\theta$, we say $\sin\theta$ equals the **y-coordinate** of the point which is at angle $\theta$ around the **unit circle**, _starting at (1,0) and going counterclockwise_. We say $\cos\theta$ is the **x-coordinate** of that point.
 
-Formally...
+<DRP>
+<span slot="name"><Formally /></span>
 
-  
 For _**any**_ angle $\theta$, consider the point on the unit circle that is $\theta$ radians counterclockwise from the positive x-axis. We define $\sin \theta$ ($\sin: \R \longrightarrow \R$) to be the y-coordinate of this point, and $\cos \theta$ ($\cos: \R \longrightarrow \R$) to be the x-coordinate.
 
 If $\theta \geq2\pi$, we wrap around the circle. If $\theta <0$, we travel clockwise.
+</DRP>
 
+<PRB>
 **5.** Let's gut check this new definition. Before, we had sine and cosine ranging strictly between 0 and 1 (why?). Now, our sine and cosine range inclusively between -1 and 1---so we've expanded the range a bit, but for good reason.  
-  
+
 Also, we knew sin(t) = cos(90-t). Explain why this is still true visually with our new definitions.
+</PRB>
+
 
 ### basic trig identities
 

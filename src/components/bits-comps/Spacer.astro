@@ -1,0 +1,11 @@
+---
+// Spacer
+
+import "/global-styles.css";
+const { height } = Astro.props; 
+---
+<div class="spacing-as-nothing">
+    <div class="unHighlightable" style=`margin-bottom: calc(${height}em - 1.65em);`>
+        &nbsp;
+    </div> 
+</div>

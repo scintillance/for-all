@@ -48,6 +48,7 @@ export default defineConfig({
       imports: [
         { 
           './src/components/bits-comps/Horizontal-Bar.astro': [['default', 'Bar']],
+          './src/components/bits-comps/Spacer.astro': [['default', 'Spa']],
 
           './src/components/pieces-comps/Right-Triangle-Trinket.astro': [['default', 'RightTriangleTrinket']],
           './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
@@ -57,6 +58,8 @@ export default defineConfig({
           './src/components/text-bits-comps/Tooltip-Key.astro': [['default', 'Key']],
           './src/components/text-bits-comps/Tooltip-Note.astro': [['default', 'Note']],
 
+          './src/components/text-block-comps/Askew.astro': [['default', 'ASK']],
+          './src/components/text-block-comps/ByTheWay-R.astro': [['default', 'BTW_R']],
           './src/components/text-block-comps/Dropdown.astro': [['default', 'DRP']],
           './src/components/text-block-comps/Rectangled.astro': [['default', 'RCT']],
           './src/components/text-block-comps/Hint.astro': [['default', 'HNT']],
@@ -64,7 +67,7 @@ export default defineConfig({
           './src/components/text-block-comps/Quote.astro': [['default', 'QUO']],
           './src/components/text-block-comps/Rainbowed.astro': [['default', 'RBW']],
           './src/components/text-block-comps/Solution.astro': [['default', 'SOL']],
-          
+
           './src/components/text-inline-comps/Pullout.astro': [['default', 'P']],
           './src/components/text-inline-comps/Subdued.astro': [['default', 'S']],
           './src/components/text-inline-comps/Tooltip.astro': [['default', 'T']],
