@@ -1,7 +1,9 @@
 ---
-import Header from "../components/layout-comps/Header.astro"
+import HomeHeader from "../components/layout-comps/Home-Header.astro"
+import Layout from "../layouts/Layout.astro"
 ---
 
+{/* 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -15,4 +17,59 @@ import Header from "../components/layout-comps/Header.astro"
 		<Header />
 		<h1>Welcome to scintilla</h1>
 	</body>
-</html>
+</html> 
+*/}
+
+
+<Layout title="Scintilla">
+	
+	<style>
+		body {
+			mask-image: linear-gradient(to bottom right, #ffff 38%, #fff3 100%);
+		}
+	</style>
+
+	<HomeHeader/>
+	
+	<div class="home">
+		<div class="home-container-wrapper">
+			<div class="container">
+				Welcome to <span class="Scintilla">Scintilla</span>!
+			</div>
+			<div class="container">
+				
+				<p>Here I write <b>blog posts</b> that talk about <span style="font-weight: bold; color: var(--bright-og-orange)">math</span>, a <b>learning glossary</b> (<span class="Specks">Specks</span>), and some other miscellaneous stuff. If you love math, competition math or the casual kind, you'll feel right at home.</p>
+
+				<p>But even if you hate math, or struggle with it: I promise, I will try to explain things as best as I can!</p>
+
+				<p>Feel free to take a look... <i>you might learn something!</i></p>
+
+			</div>
+		</div>
+		<div>
+	      	<svg style="background: transparent; display: block; overflow: visible; stroke: var(--dark-og-red); stroke-width: 2; fill: transparent;">
+				<circle cx="300" cy="400" r="300"/>
+				<circle cx="300" cy="400" r="4" fill="var(--dark-og-red)" stroke="transparent"/>
+				<line x1="-100" y1="-100" x2="900" y2="600"/>
+				<line x1="300" y1="400" x2="599.5" y2="390.5"/>
+				<line x1="300" y1="400" x2="206.5" y2="114.5"/>
+
+				<circle cx="160" cy="600" r="230"/>
+				<polygon points="400 700 650 650 800 350"/>
+
+				<circle cx="399.5" cy="69" r="45"/>
+				<circle cx="500" cy="100" r="60"/>
+				<circle cx="615" cy="183" r="82"/>
+
+				<polygon points="50 50 150 50 150 150 50 150"/>
+				<polygon points="30 30 130 30 130 130 30 130"/>
+				<line x1="30" y1="30" x2="50" y2="50"/>
+				<line x1="30" y1="130" x2="50" y2="150"/>
+				<line x1="130" y1="30" x2="150" y2="50"/>
+				<line x1="130" y1="130" x2="150" y2="150"/>
+
+			</svg>
+		</div>
+	</div>
+
+</Layout>
