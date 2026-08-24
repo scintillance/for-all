@@ -1,0 +1,16 @@
+---
+import "/global-styles.css"; 
+const { w, h } = Astro.props;
+---
+
+<div class="diagram spacing-as-nothing">
+    <div>
+        <svg class="svg-not-padded" width={w} height={h} viewBox=`0 0 ${w} ${h}` style="background: transparent; display: block;">
+            <slot/>
+        </svg>
+    </div>
+    <div class="figure">
+        <slot name="fig"/>
+    </div>
+</div>
+    

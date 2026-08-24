@@ -60,7 +60,8 @@ export default defineConfig({
         './src/components/bits-comps/Horizontal-Bar.astro': [['default', 'Bar']],
         './src/components/bits-comps/Spacer.astro': [['default', 'Spa']],
 
-        './src/components/pieces-comps/Diagram.astro': [['default', 'Diagram']],
+        './src/components/pieces-comps/Diagram-Grid.astro': [['default', 'Diagram']],
+        './src/components/pieces-comps/Diagram-Trans.astro': [['default', 'Diagram_T']],
         './src/components/pieces-comps/Right-Triangle-Trinket.astro': [['default', 'RightTriangleTrinket']],
         './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
 
@@ -88,9 +89,9 @@ export default defineConfig({
         './src/components/text-inline-comps/Tooltip-new.astro': [['default', 'Tn']],
         './src/components/text-inline-comps/Vocab.astro': [['default', 'V']],
 
-        './src/components/text-inline-comps/trig/Adjacent.astro': [['default', "Ad"]],
-        './src/components/text-inline-comps/trig/Opposite.astro': [['default', "Op"]],
-        './src/components/text-inline-comps/trig/Hypotenuse.astro': [['default', "Hy"]],
+        './src/components/text-inline-comps/Label-Purple.astro': [['default', "Ad"]],
+        './src/components/text-inline-comps/Label-Green.astro': [['default', "Op"]],
+        './src/components/text-inline-comps/Label-Red.astro': [['default', "Hy"]],
 
       }
     ],

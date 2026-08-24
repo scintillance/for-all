@@ -27,17 +27,12 @@ Right triangle trig
 
 <Diagram w="350" h="350">
 
-<polygon points="100 0 100 300 300 300" fill="var(--mint-trans)" stroke="var(--mint-title)" stroke-width="3" />
-
-<path d="M 100 0 L 300 300" fill="none" stroke="var(--red-label)" stroke-width="3"/>
-
-<path d="M 100 280 L 120 280 L 120 300" fill="none" stroke="var(--mint-title)" stroke-width="3"/>
-
-<text fill="var(--red-label)" font-weight="bold" font-family="'Instrument Serif', serif" font-size="var(--wp-font-size-medium)" text-anchor="middle" dominant-baseline="middle" x="250" y="130">Hypotenuse</text>
-
-<text fill="var(--mint-title)" font-weight="bold" font-family="'Instrument Serif', serif" font-size="var(--wp-font-size-medium)" text-anchor="start" x="60" y="150" >Leg</text>
-
-<text fill="var(--mint-title)" font-weight="bold" font-family="'Instrument Serif', serif" font-size="var(--wp-font-size-medium)" text-anchor="middle" x="200" y="330" >Leg</text>
+<polygon points="100 0 100 300 300 300" class="mint-poly"/>
+<path d="M 100 0 L 300 300" class="stroke" stroke="var(--red-label)"/>
+<path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
+<text fill="var(--red-label)" class="svg-label-start" x="210" y="130">Hypotenuse</text>
+<text fill="var(--mint-title)" class="svg-label-end" x="80" y="150" >Leg</text>
+<text fill="var(--mint-title)" class="svg-label-mid" x="200" y="330" >Leg</text>
 
 <Fragment slot="fig">
 A right triangle, with <Tn>hypotenuse<Fragment slot="tip">The longest side of a right triangle; across from the right angle</Fragment></Tn> and <Tn>legs<Fragment slot="tip">The 2 shorter sides of a right triangle</Fragment></Tn> labeled
@@ -49,18 +44,84 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
 
 <BTW_R>Well, think about this: **scaling up or down a triangle both <P>keeps its angles</P> and <P>scales its sides by a common factor</P>.**<Fragment slot="btw">These scaled triangles are called <V>similar triangles</V>.</Fragment></BTW_R> Also, one angle in a right triangle is already 90 degrees. That means if you know one other angle, then you can figure out what all 3 angles are, which means you know exactly how the triangle looks. <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S> The only information you don't have is how the right triangle is _scaled_. You could be dealing with any number of similar triangles!
 
-\[images of similar triangles of different scales, with same angles & orientation\]
+<Diagram w="500" h="350">
+
+<polygon points="100 0 100 300 300 300" class="mint-poly"/>
+<path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
+<foreignObject class="med-katex" x="220" y="130" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Hy{2c}$
+    </div>
+</foreignObject>
+<foreignObject class="med-katex" x="180" y="310" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Ad{2a}$
+    </div>
+</foreignObject>
+<foreignObject class="med-katex" x="60" y="150" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Op{2b}$
+    </div>
+</foreignObject>
+<path d="M 280 300 A 20 20 0 0 1 288.905 283.359" class="stroke" stroke="var(--yellow)" />
+<path d="M 100 20 A 20 20 30 0 0 111.094 16.641" class="stroke" stroke="var(--blue-text)" />
+
+<polygon points="310 30 310 210 430 210" class="mint-poly"/>
+<path d="M 310 190 L 330 190 L 330 210" class="stroke" stroke="var(--mint-title)" />
+<foreignObject class="med-katex" x="390" y="100" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Hy{c}$
+    </div>
+</foreignObject>
+<foreignObject class="med-katex" x="360" y="220" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Ad{a}$
+    </div>
+</foreignObject>
+<foreignObject class="med-katex" x="285" y="120" width="30" height="30">    
+    <div xmlns="http://w3.org/1999/xhtml">
+    $\Op{b}$
+    </div>
+</foreignObject>
+<path d="M 410 210 A 20 20 0 0 1 418.906 193.359" class="stroke" stroke="var(--yellow)" />
+<path d="M 310 50 A 20 20 30 0 0 321.094 46.641" class="stroke" stroke="var(--blue-text)" />
+
+<Fragment slot="fig">
+These two triangles are <V>similar</V>: they have the same angles, and their sides have the same proportions.
+</Fragment>
+
+</Diagram>
 
 If we want to relate the angles in a right triangle to the sides, we better do so in a way that **doesn't depend on which size triangle we pick with those angles**.
 
 Then, it's natural to look at the <P>**ratios**</P> of sides. Let there be an angle $x$ in a right triangle. 
 <ul>
-<li>Label the leg across, or opposite, from angle $x$ as the <Op>opposite leg</Op>.</li>
-<li>The leg closer to angle $x$ is the <Ad>adjacent leg</Ad>.</li>
-<li>And the longest side is the <Hy>hypotenuse</Hy>.</li>
+<li>Label the leg across, or opposite, from angle $x$ as the <Op><span class="underline-label">opposite leg</span></Op>.</li>
+<li>The leg closer to angle $x$ is the <Ad><span class="underline-label">adjacent leg</span></Ad>.</li>
+<li>And the longest side is the <Hy><span class="underline-label">hypotenuse</span></Hy>.</li>
 </ul>
 
-\[pic of above\]
+<Diagram w="350" h="350">
+
+<polygon points="120 0 120 300 320 300" class="mint-poly"/>
+
+<path d="M 120 280 L 140 280 L 140 300" class="stroke" stroke="var(--mint-title)"/>
+<path d="M 120 0 L 320 300" class="stroke" stroke="var(--red-label)" />
+<path d="M 120 0 L 120 300" class="stroke" stroke="var(--green-label)" />
+<path d="M 320 300 L 120 300" class="stroke" stroke="var(--purple-label)" />
+
+<text fill="var(--red-label)" class="svg-label-start" x="230" y="130">Hypotenuse</text>
+<text fill="var(--green-label)" class="svg-label-end" x="100" y="150" >Opposite leg</text>
+<text fill="var(--purple-label)" class="svg-label-mid" x="220" y="330" >Adjacent leg</text>
+
+<path d="M 300 300 A 20 20 0 0 1 308.905 283.359" fill="none" stroke="var(--yellow)" stroke-width="3" />
+<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="290" >θ</text>
+
+<Fragment slot="fig">
+A right triangle with angle $\theta$ (theta) labelled. Relative to $\theta$, we label the opposite and adjacent legs.
+</Fragment>
+
+</Diagram>
 
 Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>.
 
@@ -75,13 +136,27 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 </ASK_II>
 </RBW>
 
-\[pic with example: triangle with 30 degrees, shorter leg length of 2, hyp length of 4\]
+<Diagram_T w="400" h="270">
 
-In the above example with our $30$-degree right triangle, if we actually sat down and built a triangle with those measurements, it would have a <Hy>hypotenuse</Hy> of $4$. Therefore we say $\sin (30^\circ) = \dfrac24 = \dfrac12$.
+<polygon points="50,50 50,224 351.377,224" class="mint-poly" />
 
-This makes sense to say because if we took any other right triangle with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\frac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P>. This is just what we need!
+<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--mint-title)" />
+<path d="M 50,50 L 351.377,224" class="stroke" stroke="var(--red-label)" />
+<path d="M 50,50 L 50,224" class="stroke" stroke="var(--green-label)" />
+<path d="M 50,224 L 351.377,224" class="stroke" stroke="var(--purple-label)" />
 
-We can similarly define the <V>cosine</V> of angle x, or $\V{\cos x}$, to be the length ratio of the <Ad>adjacent</Ad> leg over the <Hy>hypotenuse</Hy>.
+<text fill="var(--red-label)" class="svg-label-start faux-latex" x="200" y="120">4</text>
+<text fill="var(--green-label)" class="svg-label-end faux-latex" x="35" y="140" >2</text>
+<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" fill="none" stroke="var(--yellow)" stroke-width="3" />
+<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="215" >30°</text>
+
+</Diagram_T>
+
+In the above example with our $30$-degree right triangle, if we actually built a triangle with those measurements, it would need to have a <Hy>hypotenuse</Hy> of $\Hy4$. The leg <Op>opposite</Op> the $30\Deg$ angle is the shorter leg, which had length $\Op2$. Therefore we say $\sin (30^\circ) = \dfrac{\Op2}{\Hy4} = \dfrac12$.
+
+Assigning a unique value ($1/2$) to an angle ($30\Deg$) makes sense because if we took _any other right triangle_ with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\dfrac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P>. This is just what we need!
+
+That's just 1 angle, though... We can similarly define the <V>cosine</V> of angle x, or $\V{\cos x}$, to be the length ratio of the <Ad>adjacent</Ad> leg over the <Hy>hypotenuse</Hy>.
 
 <RBW>
 <ASK_II>
@@ -94,22 +169,32 @@ We can similarly define the <V>cosine</V> of angle x, or $\V{\cos x}$, to be the
 </ASK_II>
 </RBW>
 
-\[pic of triangle with angle y, sides 3,4,5\]
-
 <DRP>
 <span slot="name"><Formally /></span>
 
-For any angle $x$, where $0<x<\pi/2$, we consider the right triangle ABC with $\angle A=x \ \text{radians}$ and $\angle C=\pi/2\ \text{radians}=90^\circ$. Then, we define the sine function ($\sin:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{BC}{AB}$ and the cosine function ($\cos:(0,\pi/2) \longrightarrow (0,1)$) as $\frac{AC}{AB}$. <Tn> _What are <a href="https://www.mathsisfun.com/geometry/radians.html" target="_blank">radians</a>?_ <span slot="tip">A unit of angle measurement common in more advanced math. <b>$\mathbf{2\pi}$ radians is one full turn, that is, $\mathbf{360^\circ}$.</b><br/><br/>In some sense, radians are the most "mathematical" unit of angle measurement. Click the link on the word "radians" to see more!</span> </Tn>
+For any angle $x$, where $0<x<\pi/2$, we consider the right triangle ABC with $\angle A=x \ \text{radians}$ and $\angle C=\pi/2\ \text{radians}=90^\circ$. Then, we define the sine function ($\sin:(0,\pi/2) \longrightarrow (0,1)$) as $\dfrac{BC}{AB}$ and the cosine function ($\cos:(0,\pi/2) \longrightarrow (0,1)$) as $\dfrac{AC}{AB}$. <Tn> _What are <a href="https://www.mathsisfun.com/geometry/radians.html" target="_blank">radians</a>?_ <span slot="tip">A unit of angle measurement common in more advanced math. <b>$\mathbf{2\pi}$ radians is one full turn, that is, $\mathbf{360^\circ}$.</b><br/><br/>In some sense, radians are the most "mathematical" unit of angle measurement. Click the link on the word "radians" to see more!</span> </Tn>
 
-This is the simpler definition of sine and cosine for right triangle geometry. It will be expanded as we learn more!
+This is the **simpler definition** of sine and cosine for right triangle geometry. It will be expanded as we learn more!
 </DRP>
 
 <Spa height="4" />
 
+<Diagram_T w="400" h="300">
+
+<polygon points="338,48 338,253 64.667,253" class="blue-poly" />
+
+<path d="M 338,233 L 318,233 L 318,253" class="stroke" stroke="var(--blue-vivid)" />
+
+<text fill="var(--blue-vivid)" class="svg-label-end faux-latex" x="193" y="130">5</text>
+<text fill="var(--blue-vivid)" class="svg-label-mid faux-latex" x="200" y="280" >4</text>
+<text fill="var(--blue-vivid)" class="svg-label-start faux-latex" x="354" y="150" >3</text>
+<path d="M 84.667,253 A 20 20 0 0 0 80.667,241" fill="none" stroke="var(--yellow)" stroke-width="3" />
+<text fill="var(--yellow)" class="svg-label-mid faux-latex" x="120" y="234" >y</text>
+
+</Diagram_T>
 <PRB>
 In the triangle above, what is $\sin{y}$? What about $\cos{y}$?
 </PRB>
-
 <SOL>
 Note that this is a right triangle, so we can use our formulas for $\sin$ and $\cos$. 
 
@@ -238,13 +323,13 @@ $$
 $$
 </RBW>
 
-Notice what this implies. Remember, if I travel $x$ meters east and $y$ meters north, the total distance I travel is $\sqrt{x^2+y^2}$ meters (that's Pythag). Therefore, the graph of $\sqrt{x^2+y^2} = 1$ on the plane of points $(x,y)$ looks like _all points that take a total distance of 1 unit to get to_. <BTW_R>We often write this equation as<Fragment slot="btw">(We've squared both sides here. Usually you need to take precautions when you do that, but here we don't have to worry since since both sides are always nonnegative: for all real $x$ and $y$, $x^2+y^2\geq0$ and $1\geq0$.)</Fragment></BTW_R>
+Notice what this implies. Remember, if I travel $x$ meters east and $y$ meters north, the total distance I travel is $\sqrt{x^2+y^2}$ meters (that's Pythag). Therefore, the graph of $\sqrt{x^2+y^2} = 1$ on the plane of points $(x,y)$ looks like _all points that take a total distance of 1 unit to get to_. We often write this equation as <Note>We've squared both sides here. Usually you need to take precautions when you do that, but here we don't have to worry since since both sides are always nonnegative: for all real $x$ and $y$, $x^2+y^2\geq0$ and $1\geq0$.</Note>
 
 $$
 x^2+y^2=1.
 $$
 
-In other words, the points (x, y) that satisfy the above equation are **all points on the plane that are a distance of 1 from the origin (0,0)**. This forms a **_circle_**, specifically the <V>unit circle</V> (the circle with radius 1, centered at the origin).
+In other words, the points (x, y) that satisfy the above equation are **all points on the plane that are a distance of 1 from the origin (0,0)**. This forms a **_circle_**, specifically the <Tn><V>unit circle</V><Fragment slot="tip">The circle with radius 1, centered at the origin.</Fragment></Tn>.
 
 \[Hm... I wonder what values for these sines would make sense...\]
 
