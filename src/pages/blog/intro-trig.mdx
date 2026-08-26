@@ -6,6 +6,14 @@ draft: true
 featuredimage: "../images/disc.png"
 ---
 
+<RightTriangleTrinket>
+
+<Si>As a preview for this post</Si>, play around with this trinket! Notice how **changing one of the angles** in a right triangle affects the **ratios of its sides**.
+
+Here, we fix the hypotenuse of the right triangle to have a length of 180. _What would happen to the ratios if we changed this length?_
+
+</RightTriangleTrinket>
+
 ### intro to | _Trigonometry_
 
 <St>There's a kind of music to trigonometry.</St> It describes **circular motion**, yet also has deep connections to **triangles** and lots of other things. Like music. After all, every sound we hear is really just a sum of **sine waves**...
@@ -26,21 +34,29 @@ Right triangle trig
 <Si>We'll start with <u>triangles</u>.</Si> Let's look at the easiest-to-measure triangles: **_right triangles_**.
 
 <Diagram w="350" h="350">
-
 <polygon points="100 0 100 300 300 300" class="mint-poly"/>
 <path d="M 100 0 L 300 300" class="stroke" stroke="var(--red-label)"/>
 <path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
 <text fill="var(--red-label)" class="svg-label-start" x="210" y="130">Hypotenuse</text>
 <text fill="var(--mint-title)" class="svg-label-end" x="80" y="150" >Leg</text>
 <text fill="var(--mint-title)" class="svg-label-mid" x="200" y="330" >Leg</text>
-
 <Fragment slot="fig">
-A right triangle, with <Tn>hypotenuse<Fragment slot="tip">The longest side of a right triangle; across from the right angle</Fragment></Tn> and <Tn>legs<Fragment slot="tip">The 2 shorter sides of a right triangle</Fragment></Tn> labeled
+A right triangle, with <Tn>hypotenuse<Fragment slot="tip">The longest side of a right triangle; across from the right angle</Fragment></Tn> and <Tn>legs<Fragment slot="tip">The 2 shorter sides of a right triangle</Fragment></Tn> labeled.
 </Fragment>
-
 </Diagram>
 
 Specifically, we want to relate the **angles** to the **sides**. For example, if we know a right triangle has shorter leg length of 2, and one angle of 30 degrees, what are the other angles and sides? Can we even determine them?
+
+<Diagram_T w="400" h="270">
+<polygon points="50,50 50,224 351.377,224" class="red-poly" />
+<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--trans-reduced-og-red)" />
+<text fill="var(--trans-reduced-og-red)" class="svg-label-end faux-latex" x="35" y="140">2</text>
+<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" class="stroke" stroke="var(--yellow)" />
+<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="215">30°</text>
+<Fragment slot="fig">
+    Surely we can figure this out...
+</Fragment>
+</Diagram_T>
 
 <BTW_R>Well, think about this: **scaling up or down a triangle both <P>keeps its angles</P> and <P>scales its sides by a common factor</P>.**<Fragment slot="btw">These scaled triangles are called <V>similar triangles</V>.</Fragment></BTW_R> Also, one angle in a right triangle is already 90 degrees. That means if you know one other angle, then you can figure out what all 3 angles are, which means you know exactly how the triangle looks. <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S> The only information you don't have is how the right triangle is _scaled_. You could be dealing with any number of similar triangles!
 
@@ -48,7 +64,7 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
 
 <polygon points="100 0 100 300 300 300" class="mint-poly"/>
 <path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
-<foreignObject class="med-katex" x="220" y="130" width="30" height="30">    
+<foreignObject class="med-katex" x="44%" y="37.14%" width="30" height="30">    
     <div xmlns="http://w3.org/1999/xhtml">
     $\Hy{2c}$
     </div>
@@ -96,7 +112,7 @@ If we want to relate the angles in a right triangle to the sides, we better do s
 
 Then, it's natural to look at the <P>**ratios**</P> of sides. Let there be an angle $x$ in a right triangle. 
 <ul>
-<li>Label the leg across, or opposite, from angle $x$ as the <Op><span class="underline-label">opposite leg</span></Op>.</li>
+<li>The leg opposite (across from) angle $x$ is the <Op><span class="underline-label">opposite leg</span></Op>.</li>
 <li>The leg closer to angle $x$ is the <Ad><span class="underline-label">adjacent leg</span></Ad>.</li>
 <li>And the longest side is the <Hy><span class="underline-label">hypotenuse</span></Hy>.</li>
 </ul>
@@ -111,8 +127,8 @@ Then, it's natural to look at the <P>**ratios**</P> of sides. Let there be an an
 <path d="M 320 300 L 120 300" class="stroke" stroke="var(--purple-label)" />
 
 <text fill="var(--red-label)" class="svg-label-start" x="230" y="130">Hypotenuse</text>
-<text fill="var(--green-label)" class="svg-label-end" x="100" y="150" >Opposite leg</text>
-<text fill="var(--purple-label)" class="svg-label-mid" x="220" y="330" >Adjacent leg</text>
+<text fill="var(--green-label)" class="svg-label-end" x="100" y="150">Opposite leg</text>
+<text fill="var(--purple-label)" class="svg-label-mid" x="220" y="330">Adjacent leg</text>
 
 <path d="M 300 300 A 20 20 0 0 1 308.905 283.359" fill="none" stroke="var(--yellow)" stroke-width="3" />
 <text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="290" >θ</text>
@@ -138,9 +154,9 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 
 <Diagram_T w="400" h="270">
 
-<polygon points="50,50 50,224 351.377,224" class="mint-poly" />
+<polygon points="50,50 50,224 351.377,224" class="red-poly" />
 
-<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--mint-title)" />
+<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--trans-reduced-og-red)" />
 <path d="M 50,50 L 351.377,224" class="stroke" stroke="var(--red-label)" />
 <path d="M 50,50 L 50,224" class="stroke" stroke="var(--green-label)" />
 <path d="M 50,224 L 351.377,224" class="stroke" stroke="var(--purple-label)" />
@@ -152,7 +168,7 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 
 </Diagram_T>
 
-In the above example with our $30$-degree right triangle, if we actually built a triangle with those measurements, it would need to have a <Hy>hypotenuse</Hy> of $\Hy4$. The leg <Op>opposite</Op> the $30\Deg$ angle is the shorter leg, which had length $\Op2$. Therefore we say $\sin (30^\circ) = \dfrac{\Op2}{\Hy4} = \dfrac12$.
+In the above example with our $30$-degree right triangle, if we actually built a triangle with those measurements, it would have a <Hy>hypotenuse</Hy> of $\Hy4$. The leg <Op>opposite</Op> the $30\Deg$ angle is the shorter leg, which had length $\Op2$. Therefore we say $\sin (30^\circ) = \dfrac{\Op2}{\Hy4} = \dfrac12$.
 
 Assigning a unique value ($1/2$) to an angle ($30\Deg$) makes sense because if we took _any other right triangle_ with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\dfrac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P>. This is just what we need!
 
@@ -203,6 +219,35 @@ We see that, _relative to angle_ $y$, the side with length $\Op3$ is <Op>opposit
 <br/><S>If we had picked any _similar_ right triangle—i.e., any other right triangle that this angle $y$ could make—the sides would simply be a scaled version of $3$, $4$, and $5$, and the ratios $\sin y$ and $\cos y$ would remain the same.</S>
 </SOL>
 
+<Spa height="4"/>
+
+<M>Given an Angle</M>Now, it's simple to calculate a certain sine or cosine given the **sides** (as above), but harder to get it from the **angle**. Like, _What's the sine of 17.2 degrees?_ If we knew some side lengths of a right triangle with an angle of $17.2\Deg$, we'd be able to find $\sin(17.2\Deg)$, but right now we are lost.
+
+Truth is, the sines and cosines for most angles are weird numbers without nice mathematical representations. Instead of finding them ourselves, we use a calculator!
+
+<br/><S>You can think of it like some nice guy sat down and built right triangles of every angle, measuring the sides with a ruler and filling in the table of sines and cosines. :) <Note>You'll see later on (not in this lesson) how the sine and cosine of _any_ angle can be found mathematically. It's not easy!</Note></S>
+
+<Spa height="5"/>
+
+<PRB>
+You used a calculator and found that $\sin(17.2\Deg) = 0.29570... \approx \B{0.3}$. _Use this estimate of $\I{0.3}$ to answer the following question._
+
+In right triangle $ABC$, the right angle is at vertex $C$, and there is a $17.2\Deg$ angle at vertex $A$. If $AB = 10$, what is $BC$? 
+</PRB>
+
+<SOL>
+</SOL>
+
+<Spa height="4"/>
+
+<M>Nice sines and cosines</M>While most angles have ugly sine and cosine values, some have **simple, useful values**, that for many purposes are worth finding and learning.
+
+<P>**These angles include $\B{0\Deg}$, $\B{30\Deg}$, $\B{45\Deg}$, $\B{60\Deg}$, and $\B{90\Deg}$.**</P> Actually, so far I haven't defined the sine and cosine of $0\Deg$ and $90\Deg$ (can't exactly make a right triangle with an angle of $0\Deg$, or two angles measuing $90\Deg$, right?). But maybe you can infer.
+
+In the mean time, derive the rest on your own!
+
+<Spa height="5"/>
+
 <PRB>
 Calculate $\sin(45^\circ)$ and $\cos(45^\circ)$. <S>_You only need some basic geo knowledge for this!_</S>
 </PRB>
@@ -210,7 +255,7 @@ Calculate $\sin(45^\circ)$ and $\cos(45^\circ)$. <S>_You only need some basic ge
 <SOL>
 We need to draw a right triangle, as before, with one angle of $45\Deg$.
 
-But note: the two non-right angles in a right triangle have to add to $90\Deg$ <S>(so the whole thing adds to $180\Deg$)</S>, meaning that if one of them measures $45\Deg$, the other also measures $45\Deg$, and we have an <P>**isosceles**</P> right triangle. <S>(That's "**base angles theorem**"—2 equal angles in a triangle means 2 equal sides, which is an isosceles triangle.)</S>
+But note: the two non-right angles in a right triangle have to add to $90\Deg$ <S>(so the whole thing adds to $180\Deg$)</S>, meaning that if one of them measures $45\Deg$, the other also measures $45\Deg$, <BTW_R>and we have an <P>**isosceles**</P> right triangle. <Fragment slot="btw">(That's "**base angles theorem**"—2 equal angles in a triangle means 2 equal sides, which is an isosceles triangle.)</Fragment></BTW_R>
  
 \[Image\]
 
@@ -272,6 +317,12 @@ Also, munch on this... a $45^\circ\text{-}45^\circ\text{-}90^\circ$ triangle is 
 Finally, as a challenge to all those who are getting bored of me yapping, try and derive $\sin(15^\circ)$ from scratch, geometrically. Good to know for math contests—and party trivia!
 </S>
 </SOL>
+
+<Spa height="4"/>
+
+Finally, let's prove one important fact about sines and cosines.
+
+<Spa height="5"/>
 
 <PRB>
 <Key/><Challenge/> Prove $\sin^2x + \cos^2x=1$.<S><Note>That is, prove that for all angles $x$ (where x is strictly between $0^\circ$ and $90^\circ$), this relation holds.</Note><BTW_R>By the way...<Fragment slot="btw">Note that $(\sin(x))^2$, the square of $\sin x$, is written $\sin^2x$.</Fragment></BTW_R></S>

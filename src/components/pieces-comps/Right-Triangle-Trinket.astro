@@ -35,7 +35,7 @@ import "/global-styles.css";
   <span class="contained-title">right triangle demo</span>
   
   <!-- Angle slider -->
-  <div class="slider-container">
+  <div class="slider-container" style="color: var(--yellow);">
     <label for="angleSlider">Angle (θ): <span id="angleValue">30</span></label>
     <input type="range" id="angleSlider" min="1" max="89" value="30" step="1">
   </div>
@@ -57,7 +57,7 @@ import "/global-styles.css";
         <text id="lblHypotenuse" fill="var(--red-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle" dominant-baseline="middle">Hypotenuse</text>
         <text id="lblOpposite" fill="var(--green-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="start">Opposite</text>
         <text id="lblAdjacent" fill="var(--purple-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle">Adjacent</text>
-        <text id="lblTheta" fill="var(--og-black)" font-weight="bold" font-size="14">θ</text>
+        <text id="lblTheta" fill="var(--yellow)" font-weight="bold" font-size="14">θ</text>
       
       </svg>
     </div>
@@ -78,9 +78,12 @@ import "/global-styles.css";
 
 <!-- Container underneath with text -->
 <div class="container">
-  <p class="contained-paragraph">
+  <!-- <p class="contained-paragraph">
     <i>Welcome to this interactive demo!</i> Play around with the value of <i>θ</i>, an angle in a right triangle, to see how the lengths and the ratios between them change. Here, we fix the hypotenuse to have a length of 180. 
-  </p>
+  </p> -->
+  <div class="contained-paragraph">
+    <slot/>
+  </div>
 </div>
 </div>
 

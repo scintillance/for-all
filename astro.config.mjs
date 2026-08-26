@@ -81,6 +81,10 @@ export default defineConfig({
         './src/components/text-block-comps/Rainbowed.astro': [['default', 'RBW']],
         './src/components/text-block-comps/Solution.astro': [['default', 'SOL']],
 
+        './src/components/text-inline-comps/Label-Purple.astro': [['default', "Ad"]],
+        './src/components/text-inline-comps/Label-Green.astro': [['default', "Op"]],
+        './src/components/text-inline-comps/Label-Red.astro': [['default', "Hy"]],
+        './src/components/text-inline-comps/Mini-Heading.astro': [['default', 'M']],
         './src/components/text-inline-comps/Pullout.astro': [['default', 'P']],
         './src/components/text-inline-comps/Start-Italic.astro': [['default', 'Si']],
         './src/components/text-inline-comps/Start.astro': [['default', 'St']],
@@ -88,10 +92,6 @@ export default defineConfig({
         './src/components/text-inline-comps/Tooltip.astro': [['default', 'T']],
         './src/components/text-inline-comps/Tooltip-new.astro': [['default', 'Tn']],
         './src/components/text-inline-comps/Vocab.astro': [['default', 'V']],
-
-        './src/components/text-inline-comps/Label-Purple.astro': [['default', "Ad"]],
-        './src/components/text-inline-comps/Label-Green.astro': [['default', "Op"]],
-        './src/components/text-inline-comps/Label-Red.astro': [['default', "Hy"]],
 
       }
     ],

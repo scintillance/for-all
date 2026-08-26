@@ -3,14 +3,14 @@ import "/global-styles.css";
 const { w, h } = Astro.props;
 ---
 
-<div class="diagram spacing-as-nothing">
+<figure class="diagram spacing-as-nothing">
     <div>
-        <svg class="svg-not-padded" width={w} height={h} viewBox=`0 0 ${w} ${h}` style="background: transparent; display: block;">
+        <svg class="svg-not-padded" width={w} height={h} viewBox=`0 0 ${w} ${h}` xmlns="http://www.w3.org/2000/svg" style="background: transparent; display: block;">
             <slot/>
         </svg>
     </div>
-    <div class="figure">
+    <figcaption class="figcaption caption-bottom-space">
         <slot name="fig"/>
-    </div>
-</div>
+    </figcaption>
+</figure>
     
