@@ -5,7 +5,10 @@ const { w, h } = Astro.props;
 
 <figure class="diagram spacing-as-nothing">
     <div>
-        <svg class="svg-not-padded" width={w} height={h} viewBox=`0 0 ${w} ${h}` xmlns="http://www.w3.org/2000/svg" style="background: transparent; display: block;">
+        <!-- <svg class="svg-not-padded" width={w} height={h} viewBox=`0 0 ${w} ${h}` xmlns="http://www.w3.org/2000/svg" style="background: transparent; display: block;">
+            <slot/>
+        </svg> -->
+        <svg class="svg-not-padded" viewBox=`0 0 ${w} ${h}` width="100%" height="100%" preserveAspectRatio="xMidYMid meet"  xmlns="http://www.w3.org/2000/svg" style="background: transparent; display: block;">
             <slot/>
         </svg>
     </div>

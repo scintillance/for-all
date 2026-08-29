@@ -14,6 +14,8 @@ Here, we fix the hypotenuse of the right triangle to have a length of 180. _What
 
 </RightTriangleTrinket>
 
+<UnitCircleTrinket/>
+
 ### intro to | _Trigonometry_
 
 <St>There's a kind of music to trigonometry.</St> It describes **circular motion**, yet also has deep connections to **triangles** and lots of other things. Like music. After all, every sound we hear is really just a sum of **sine waves**...
@@ -35,11 +37,11 @@ Right triangle trig
 
 <Diagram w="350" h="350">
 <polygon points="100 0 100 300 300 300" class="mint-poly"/>
-<path d="M 100 0 L 300 300" class="stroke" stroke="var(--red-label)"/>
-<path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
-<text fill="var(--red-label)" class="svg-label-start" x="210" y="130">Hypotenuse</text>
-<text fill="var(--mint-title)" class="svg-label-end" x="80" y="150" >Leg</text>
-<text fill="var(--mint-title)" class="svg-label-mid" x="200" y="330" >Leg</text>
+<path d="M 100 0 L 300 300" class="stroke st-red-label"/>
+<path d="M 100 280 L 120 280 L 120 300" class="stroke st-mint"/>
+<text class="red-label svg-label ta-start" x="210" y="130">Hypotenuse</text>
+<text class="mint svg-label ta-end" x="80" y="150" >Leg</text>
+<text class="mint svg-label" x="200" y="330" >Leg</text>
 <Fragment slot="fig">
 A right triangle, with <Tn>hypotenuse<Fragment slot="tip">The longest side of a right triangle; across from the right angle</Fragment></Tn> and <Tn>legs<Fragment slot="tip">The 2 shorter sides of a right triangle</Fragment></Tn> labeled.
 </Fragment>
@@ -49,13 +51,11 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
 
 <Diagram_T w="400" h="270">
 <polygon points="50,50 50,224 351.377,224" class="red-poly" />
-<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--trans-reduced-og-red)" />
-<text fill="var(--trans-reduced-og-red)" class="svg-label-end faux-latex" x="35" y="140">2</text>
-<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" class="stroke" stroke="var(--yellow)" />
-<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="215">30°</text>
-<Fragment slot="fig">
-    Surely we can figure this out...
-</Fragment>
+<path d="M 50,204 L 70,204 L 70,224" class="stroke st-l-red" />
+<text class="svg-label ta-end faux-latex l-red" x="35" y="140">2</text>
+<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" class="stroke st-yellow sl-round" />
+<text class="yellow faux-latex ta-mid" x="285" y="215">30°</text>
+<Fragment slot="fig">Surely we can figure this out...</Fragment>
 </Diagram_T>
 
 <BTW_R>Well, think about this: **scaling up or down a triangle both <P>keeps its angles</P> and <P>scales its sides by a common factor</P>.**<Fragment slot="btw">These scaled triangles are called <V>similar triangles</V>.</Fragment></BTW_R> Also, one angle in a right triangle is already 90 degrees. That means if you know one other angle, then you can figure out what all 3 angles are, which means you know exactly how the triangle looks. <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S> The only information you don't have is how the right triangle is _scaled_. You could be dealing with any number of similar triangles!
@@ -63,7 +63,7 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
 <Diagram w="500" h="350">
 
 <polygon points="100 0 100 300 300 300" class="mint-poly"/>
-<path d="M 100 280 L 120 280 L 120 300" class="stroke" stroke="var(--mint-title)"/>
+<path d="M 100 280 L 120 280 L 120 300" class="stroke st-mint"/>
 <foreignObject class="med-katex" x="44%" y="37.14%" width="30" height="30">    
     <div xmlns="http://w3.org/1999/xhtml">
     $\Hy{2c}$
@@ -79,11 +79,11 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
     $\Op{2b}$
     </div>
 </foreignObject>
-<path d="M 280 300 A 20 20 0 0 1 288.905 283.359" class="stroke" stroke="var(--yellow)" />
-<path d="M 100 20 A 20 20 30 0 0 111.094 16.641" class="stroke" stroke="var(--blue-text)" />
+<path d="M 280 300 A 20 20 0 0 1 288.905 283.359" class="stroke st-yellow sl-round" />
+<path d="M 100 20 A 20 20 30 0 0 111.094 16.641" class="stroke st-blue-label sl-round" />
 
 <polygon points="310 30 310 210 430 210" class="mint-poly"/>
-<path d="M 310 190 L 330 190 L 330 210" class="stroke" stroke="var(--mint-title)" />
+<path d="M 310 190 L 330 190 L 330 210" class="stroke st-mint" />
 <foreignObject class="med-katex" x="390" y="100" width="30" height="30">    
     <div xmlns="http://w3.org/1999/xhtml">
     $\Hy{c}$
@@ -99,8 +99,8 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
     $\Op{b}$
     </div>
 </foreignObject>
-<path d="M 410 210 A 20 20 0 0 1 418.906 193.359" class="stroke" stroke="var(--yellow)" />
-<path d="M 310 50 A 20 20 30 0 0 321.094 46.641" class="stroke" stroke="var(--blue-text)" />
+<path d="M 410 210 A 20 20 0 0 1 418.906 193.359" class="stroke st-yellow sl-round" />
+<path d="M 310 50 A 20 20 30 0 0 321.094 46.641" class="stroke st-blue-label sl-round" />
 
 <Fragment slot="fig">
 These two triangles are <V>similar</V>: they have the same angles, and their sides have the same proportions.
@@ -121,17 +121,17 @@ Then, it's natural to look at the <P>**ratios**</P> of sides. Let there be an an
 
 <polygon points="120 0 120 300 320 300" class="mint-poly"/>
 
-<path d="M 120 280 L 140 280 L 140 300" class="stroke" stroke="var(--mint-title)"/>
-<path d="M 120 0 L 320 300" class="stroke" stroke="var(--red-label)" />
-<path d="M 120 0 L 120 300" class="stroke" stroke="var(--green-label)" />
-<path d="M 320 300 L 120 300" class="stroke" stroke="var(--purple-label)" />
+<path d="M 120 280 L 140 280 L 140 300" class="stroke st-mint"/>
+<path d="M 120 0 L 320 300" class="stroke st-red-label" />
+<path d="M 120 0 L 120 300" class="stroke st-green-label" />
+<path d="M 320 300 L 120 300" class="stroke st-purple-label" />
 
-<text fill="var(--red-label)" class="svg-label-start" x="230" y="130">Hypotenuse</text>
-<text fill="var(--green-label)" class="svg-label-end" x="100" y="150">Opposite leg</text>
-<text fill="var(--purple-label)" class="svg-label-mid" x="220" y="330">Adjacent leg</text>
+<text class="svg-label ta-start red-label" x="230" y="130">Hypotenuse</text>
+<text class="svg-label ta-end green-label" x="100" y="150">Opposite leg</text>
+<text class="svg-label purple-label" x="220" y="330">Adjacent leg</text>
 
-<path d="M 300 300 A 20 20 0 0 1 308.905 283.359" fill="none" stroke="var(--yellow)" stroke-width="3" />
-<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="290" >θ</text>
+<path d="M 300 300 A 20 20 0 0 1 308.905 283.359" class="stroke st-yellow sl-round" />
+<text class="yellow faux-latex ta-mid" x="285" y="290" >θ</text>
 
 <Fragment slot="fig">
 A right triangle with angle $\theta$ (theta) labelled. Relative to $\theta$, we label the opposite and adjacent legs.
@@ -156,15 +156,15 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 
 <polygon points="50,50 50,224 351.377,224" class="red-poly" />
 
-<path d="M 50,204 L 70,204 L 70,224" class="stroke" stroke="var(--trans-reduced-og-red)" />
-<path d="M 50,50 L 351.377,224" class="stroke" stroke="var(--red-label)" />
-<path d="M 50,50 L 50,224" class="stroke" stroke="var(--green-label)" />
-<path d="M 50,224 L 351.377,224" class="stroke" stroke="var(--purple-label)" />
+<path d="M 50,204 L 70,204 L 70,224" class="stroke st-l-red"/>
+<path d="M 50,50 L 351.377,224" class="stroke st-red-label" />
+<path d="M 50,50 L 50,224" class="stroke st-green-label" />
+<path d="M 50,224 L 351.377,224" class="stroke st-purple-label" />
 
-<text fill="var(--red-label)" class="svg-label-start faux-latex" x="200" y="120">4</text>
-<text fill="var(--green-label)" class="svg-label-end faux-latex" x="35" y="140" >2</text>
-<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" fill="none" stroke="var(--yellow)" stroke-width="3" />
-<text fill="var(--yellow)" class="faux-latex" text-anchor="middle" x="285" y="215" >30°</text>
+<text class="red-label svg-label ta-start faux-latex" x="200" y="120">4</text>
+<text class="green-label svg-label ta-end faux-latex" x="35" y="140" >2</text>
+<path d="M 331.377,224 A 20 20 0 0 1 334.056,214" class="stroke st-yellow sl-round" />
+<text class="yellow faux-latex ta-mid" x="285" y="215" >30°</text>
 
 </Diagram_T>
 
@@ -199,13 +199,13 @@ This is the **simpler definition** of sine and cosine for right triangle geometr
 
 <polygon points="338,48 338,253 64.667,253" class="blue-poly" />
 
-<path d="M 338,233 L 318,233 L 318,253" class="stroke" stroke="var(--blue-vivid)" />
+<path d="M 338,233 L 318,233 L 318,253" class="stroke st-blue" />
 
-<text fill="var(--blue-vivid)" class="svg-label-end faux-latex" x="193" y="130">5</text>
-<text fill="var(--blue-vivid)" class="svg-label-mid faux-latex" x="200" y="280" >4</text>
-<text fill="var(--blue-vivid)" class="svg-label-start faux-latex" x="354" y="150" >3</text>
-<path d="M 84.667,253 A 20 20 0 0 0 80.667,241" fill="none" stroke="var(--yellow)" stroke-width="3" />
-<text fill="var(--yellow)" class="svg-label-mid faux-latex" x="120" y="234" >y</text>
+<text class="blue svg-label ta-end faux-latex" x="193" y="130">5</text>
+<text class="blue svg-label faux-latex" x="200" y="280" >4</text>
+<text class="blue svg-label ta-start faux-latex" x="354" y="150" >3</text>
+<path d="M 84.667,253 A 20 20 0 0 0 80.667,241" class="stroke st-yellow sl-round" />
+<text class="yellow svg-label faux-latex" x="120" y="234" >y</text>
 
 </Diagram_T>
 <PRB>
@@ -242,7 +242,7 @@ In right triangle $ABC$, the right angle is at vertex $C$, and there is a $17.2\
 
 <M>Nice sines and cosines</M>While most angles have ugly sine and cosine values, some have **simple, useful values**, that for many purposes are worth finding and learning.
 
-<P>**These angles include $\B{0\Deg}$, $\B{30\Deg}$, $\B{45\Deg}$, $\B{60\Deg}$, and $\B{90\Deg}$.**</P> Actually, so far I haven't defined the sine and cosine of $0\Deg$ and $90\Deg$ (can't exactly make a right triangle with an angle of $0\Deg$, or two angles measuing $90\Deg$, right?). But maybe you can infer.
+<P>**These angles include $\B{0\Deg}$, $\B{30\Deg}$, $\B{45\Deg}$, $\B{60\Deg}$, and $\B{90\Deg}$.**</P><Note>Notice how these correspond neatly to 0 turn, 1/12 turn, 1/8 turn, 1/6 turn, and 1/4 turn around a circle (a "turn" is $360\Deg$).</Note>Actually, so far I haven't defined the sine and cosine of $0\Deg$ and $90\Deg$ (can't exactly make a right triangle with an angle of $0\Deg$, or two angles measuring $90\Deg$, right?). But maybe you can infer.
 
 In the mean time, derive the rest on your own!
 
@@ -255,7 +255,7 @@ Calculate $\sin(45^\circ)$ and $\cos(45^\circ)$. <S>_You only need some basic ge
 <SOL>
 We need to draw a right triangle, as before, with one angle of $45\Deg$.
 
-But note: the two non-right angles in a right triangle have to add to $90\Deg$ <S>(so the whole thing adds to $180\Deg$)</S>, meaning that if one of them measures $45\Deg$, the other also measures $45\Deg$, <BTW_R>and we have an <P>**isosceles**</P> right triangle. <Fragment slot="btw">(That's "**base angles theorem**"—2 equal angles in a triangle means 2 equal sides, which is an isosceles triangle.)</Fragment></BTW_R>
+But note: the two non-right angles in a right triangle have to add to $90\Deg$ <S>(so the whole thing adds to $180\Deg$)</S>, meaning that if one of them measures $45\Deg$, the other also measures $45\Deg$, <BTW_R>and we have an <P>**isosceles**</P> right triangle. <Fragment slot="btw">(That's **base angles theorem** — 2 equal angles in a triangle means 2 equal sides, which is an isosceles triangle.)</Fragment></BTW_R>
  
 \[Image\]
 

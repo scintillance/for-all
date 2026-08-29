@@ -1,29 +1,31 @@
 ---
 import "/global-styles.css"; 
+import Opp from "../text-inline-comps/Label-Green.astro";
+import Hyp from "../text-inline-comps/Label-Red.astro";
+import Adj from "../text-inline-comps/Label-Purple.astro";
+
 ---
 <style>
-.slider-container {
+.slider-capsule {
   margin-bottom: 20px;
-  background-image: var(--gradient-panel);
-  box-shadow: var(--glow-shadow);
 
   padding: 12px 30px 30px 30px;
-  border: 0px solid #fff;
   border-radius: 60px;
   
   font-family: 'Space Mono', monospace;
 }
-#right-triangle-results {
+.right-triangle-results {
   flex: 1 1 240px;
 }
-.label { font-weight: bold; }
-.hyp { color: var(--red-label); }
-.opp { color: var(--green-label); }
-.adj { color: var(--purple-label); }
 @media screen and (max-width: 636px) {
   .slider-container {
     padding: .8em 1.4em 1.4em 1.4em;
     margin-top: 1em;
+  }
+}
+@media screen and (max-width: 730px) {
+  .right-triangle-results {
+    margin: 0px 1em 1em 1em;
   }
 }
 </style>
@@ -35,7 +37,7 @@ import "/global-styles.css";
   <span class="contained-title">right triangle demo</span>
   
   <!-- Angle slider -->
-  <div class="slider-container" style="color: var(--yellow);">
+  <div class="capsule slider-capsule yellow">
     <label for="angleSlider">Angle (θ): <span id="angleValue">30</span></label>
     <input type="range" id="angleSlider" min="1" max="89" value="30" step="1">
   </div>
@@ -44,34 +46,34 @@ import "/global-styles.css";
   <div class="workspace">
     
     <!-- Triangle SVG window -->
-    <div class="grid" style="box-shadow: var(--glow-inset-shadow); border-radius: 50px; border: 0px solid #fff;">
+    <div class="grid inset-window">
       <svg id="triangleSvg" width="100%" height="250" viewBox="0 0 300 250" style="background: transparent; display: block;">
 
         <!-- Triangle path -->
-        <polygon id="triangle" points="" fill="var(--mint-trans)" stroke="var(--mint-title)" stroke-width="3" />
+        <polygon id="triangle" points="" class="mint-poly" />
         
         <!-- Right angle mark -->
-        <path id="rightAngleMark" d="M 230 200 L 230 190 L 240 190" fill="none" stroke="var(--mint-title)" stroke-width="3"/>
+        <path id="rightAngleMark" d="M 230 200 L 230 190 L 240 190" class="stroke st-mint"/>
         
         <!-- Text labels -->
-        <text id="lblHypotenuse" fill="var(--red-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle" dominant-baseline="middle">Hypotenuse</text>
-        <text id="lblOpposite" fill="var(--green-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="start">Opposite</text>
-        <text id="lblAdjacent" fill="var(--purple-label)" font-weight="bold" font-family="'Instrument Serif', serif" text-anchor="middle">Adjacent</text>
+        <text id="lblHypotenuse" class="svg-label ta-mid red-label">Hypotenuse</text>
+        <text id="lblOpposite" class="svg-label ta-start green-label">Opposite</text>
+        <text id="lblAdjacent" class="svg-label ta-mid purple-label">Adjacent</text>
         <text id="lblTheta" fill="var(--yellow)" font-weight="bold" font-size="14">θ</text>
       
       </svg>
     </div>
       
     <!-- Side Lengths & Ratios display -->
-    <div id="right-triangle-results" class="monospace-results">
+    <div class="right-triangle-results monospace-results">
       <h2 class="contained-heading">Side Lengths & Ratios</h2>
-      <p><span class="label hyp">Hypotenuse:</span> <span id="valHyp">0.00</span></p>
-      <p><span class="label opp">Opposite:</span> <span id="valOpp">0.00</span></p>
-      <p><span class="label adj">Adjacent:</span> <span id="valAdj">0.00</span></p>
+      <p> <Hyp>Hypotenuse</Hyp> = <span id="valHyp" class="red-label cartouche">0.00</span></p>
+      <p> <Opp>Opposite</Opp> = <span id="valOpp" class="green-label cartouche">0.00</span></p>
+      <p> <Adj>Adjacent</Adj> = <span id="valAdj" class="purple-label cartouche">0.00</span></p>
       <hr class="spacing-as-monospace-results">
-      <p> <span class="opp">Opposite</span> / <span class="hyp">Hypotenuse</span> = <span id="ratioSin">0.00</span></p>
-      <p> <span class="adj">Adjacent</span> / <span class="hyp">Hypotenuse</span> = <span id="ratioCos">0.00</span></p>
-      <p> <span class="opp">Opposite</span> / <span class="adj">Adjacent</span> = <span id="ratioTan">0.00</span></p>
+      <p> <Opp>Opposite</Opp> / <Hyp>Hypotenuse</Hyp> = <span id="ratioSin" class="cartouche">0.00</span></p>
+      <p> <Adj>Adjacent</Adj> / <Hyp>Hypotenuse</Hyp> = <span id="ratioCos" class="cartouche">0.00</span></p>
+      <p> <Opp>Opposite</Opp> / <Adj>Adjacent</Adj> = <span id="ratioTan" class="cartouche">0.00</span></p>
     </div>
   </div>
 </div>

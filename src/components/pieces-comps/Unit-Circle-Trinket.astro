@@ -2,14 +2,12 @@
 import "/global-styles.css"; 
 ---
 <style>
-.thetaDisplayText {
-	color: var(--yellow);
-}
-.cosDisplayText {
-	color: var(--blue-text);
-}
-.sinDisplayText {
-	color: var(--red-text);
+.unit-circle-capsule {
+	flex: 1 1 280px;
+	background-color: rgba(144, 249, 223, 0.06);
+	max-width: 320px;
+	margin: 20px auto;
+	box-shadow: var(--glow-inset-shadow);
 }
 </style>
 
@@ -25,64 +23,64 @@ import "/global-styles.css";
 	<div class="workspace">
 
 	<!-- Circle SVG canvas -->
-	<div class="capsule" style="max-width: 320px; margin: 20px auto; box-shadow: var(--glow-inset-shadow);">
+	<div class="capsule unit-circle-capsule">
 		<svg id="circleSvg" width="100%" height="300" viewBox="0 0 300 300"style="background: transparent; display: block;">
 
 		<!-- Coordinate axes -->
-		<line x1="150" y1="20" x2="150" y2="280" stroke="var(--blue-title)" stroke-dasharray="4" />
-		<line x1="20" y1="150" x2="280" y2="150" stroke="var(--blue-title)" stroke-dasharray="4" />
+		<line x1="150" y1="20" x2="150" y2="280" class="dashed-axes" />
+		<line x1="20" y1="150" x2="280" y2="150" class="dashed-axes" />
 
 		<!-- Unit circle -->
-		<circle cx="150" cy="150" r="100" fill="none" stroke="var(--navy)" stroke-width="2" />
+		<circle cx="150" cy="150" r="100" class="st-navy stroke sw-2"/>
 
 		<!-- Theta angle -->
-		<path id="thetaAngle" d="" fill="none" stroke="var(--yellow)" stroke-width="2" />
+		<path id="thetaAngle" d="" class="st-yellow stroke sw-2" />
 
 		<!-- Theta vectors-->
-		<line id="thetaMovingVector" x1="150" y1="150" stroke="var(--yellow)" stroke-width="2" />
-		<line id="thetaStationaryVector" x1="150" y1="150" x2="250" y2="150" stroke="var(--yellow)" stroke-width="2" />
+		<line id="thetaMovingVector" x1="150" y1="150" class="st-yellow stroke sw-2" />
+		<line id="thetaStationaryVector" x1="150" y1="150" x2="250" y2="150" class="st-yellow stroke sw-2" />
 		
 		<!-- Reference triangle -->
-		<polygon id="referenceTriangle" fill="var(--mint-trans)" stroke="var(--mint-title)" stroke-width="2" />
+		<polygon id="referenceTriangle" class="mint-poly sw-2"/>
 
 		<!-- Right angle mark -->
-		<line id="rightAngleMarkHorizontal" x1="150" y1="150" x2="150" y2="150" stroke="var(--mint-title)" stroke-width="2" stroke-linecap="round" />
-		<line id="rightAngleMarkVertical" x1="150" y1="150" x2="150" y2="150" stroke="var(--mint-title)" stroke-width="2" stroke-linecap="round" />
+		<line id="rightAngleMarkHorizontal" x1="150" y1="150" x2="150" y2="150" class="st-mint stroke sw-2 sl-round" />
+		<line id="rightAngleMarkVertical" x1="150" y1="150" x2="150" y2="150" class="st-mint stroke sw-2 sl-round" />
 		
 		<!-- Unit circle node -->
-		<circle id="unitCircleNode" r="10" fill="var(--blue-title)" stroke="#fff" stroke-width="2" class="circle-point" />
+		<circle id="unitCircleNode" r="10" stroke="#fff" stroke-width="2" class="circle-point blue-title" />
 
 		<!-- Cosine node -->
-		<circle id="cosNode" cy="25" r="7" fill="var(--blue-text)" stroke="#fff" stroke-width="1" class="circle-point" />
+		<circle id="cosNode" cy="25" r="7" stroke="#fff" stroke-width="1" class="circle-point blue-label" />
 		
 		<!-- Sine node -->
-		<circle id="sinNode" cx="290" r="7" fill="var(--red-label)" stroke="#fff" stroke-width="1" class="circle-point" />
+		<circle id="sinNode" cx="290" r="7" stroke="#fff" stroke-width="1" class="circle-point crimson-label" />
 
 		<!-- Text labels -->
-		<text id="lblRadius" class="unHighlightable" fill="var(--yellow)" font-weight="bold" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">1</text>
-		<text id="lblThetaAngle" class="unHighlightable" fill="var(--yellow)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono"></text>
-		<text id="lblCos" class="unHighlightable" y="25" fill="var(--blue-text)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">1.000</text>
-		<text id="lblSin" class="unHighlightable" x="280" fill="var(--red-label)" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono">0.000</text>
-		
+		<text id="lblRadius" class="unHighlightable yellow svg-label-mono">1</text>
+		<text id="lblThetaAngle" class="unHighlightable yellow svg-label-mono"></text>
+		<text id="lblCos" class="unHighlightable blue-label svg-label-mono not-bold" y="25">1.000</text>
+		<text id="lblSin" class="unHighlightable crimson-label svg-label-mono not-bold" x="280">0.000</text>
+
 		</svg>
 	</div>
 
 	<!-- Math results & checkboxes -->
 	<div class="monospace-results-2">
 		
-		<p><strong>Angle: <span class="thetaDisplayText">θ</span> = </strong> <span id="angleDisplay"></span></p>
-		<p><strong>x = <span class="cosDisplayText">cos(θ)</span> = </strong> <span id="cosDisplay"></span></p>
-		<p><strong>y = <span class="sinDisplayText">sin(θ)</span> =</strong> <span id="sinDisplay"></span></p>
+		<p><strong>Angle: <span class="yellow">θ</span> = </strong> <span id="angleDisplay" class="yellow"></span></p>
+		<p><strong>x = <span class="blue-label">cos(θ)</span> = </strong> <span id="cosDisplay" class="cartouche blue-label"></span></p>
+		<p><strong>y = <span class="crimson-label">sin(θ)</span> =</strong> <span id="sinDisplay" class="cartouche crimson-label"></span></p>
 		
-		<label for="showLabelsCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<label for="showLabelsCheckbox" class="centered-checkbox">
 		<input type="checkbox" id="showLabelsCheckbox" checked> Show Labels
 		</label>
 		
-		<label for="showTriangleCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<label for="showTriangleCheckbox" class="centered-checkbox">
 		<input type="checkbox" id="showTriangleCheckbox" checked> Show Reference Triangle
 		</label>
 
-		<label for="autoSpinCheckbox" style="display: block; margin: 15px auto; cursor: pointer; text-align: center;">
+		<label for="autoSpinCheckbox" class="centered-checkbox">
 		<input type="checkbox" id="autoSpinCheckbox"> Automatically rotate
 		</label>
 
