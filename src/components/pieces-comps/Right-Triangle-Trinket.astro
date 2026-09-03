@@ -17,15 +17,21 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
 .right-triangle-results {
   flex: 1 1 240px;
 }
+.right-triangle-results p {
+  text-wrap: nowrap !important;
+}
 @media screen and (max-width: 636px) {
   .slider-container {
     padding: .8em 1.4em 1.4em 1.4em;
     margin-top: 1em;
   }
 }
-@media screen and (max-width: 730px) {
-  .right-triangle-results {
+@media screen and (max-width: 697.5px) {
+  /* .right-triangle-results {
     margin: 0px 1em 1em 1em;
+  } */
+  .right-triangle-results * {
+    text-align: center;
   }
 }
 </style>
