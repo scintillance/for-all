@@ -1,0 +1,62 @@
+---
+layout: "../../layouts/SpeckLayout.astro"
+title: "rationalizing denominators"
+featuredimage: "../images/bokeh.png"
+---
+
+<M2>GOAL</M2>Simplify a fraction so that its denominator has no <Tn>**radicals**<Fragment slot="tip">The $\sqrt{\phantom{H}}$ symbol</Fragment></Tn>.
+
+### Steps
+
+<PNT>
+
+If your denominator looks like <H>$a\sqrt {c\vphantom{k}}$</H> for $a,c\in\mathbb Q$, multiply the numerator and denominator by $\V{\sqrt{c\vphantom{k}}}$.<Note>By the way, don't forget to simplify any radicals first before you begin, like turning $\sqrt8$ into $2\sqrt2$. This usually makes the calculations easier!</Note>
+
+</PNT>
+
+<DRP2>
+<M2>SEE IT</M2>Simplify $\dfrac{6}{5\sqrt3}$.
+<Fragment slot="drop">
+
+Solution: Multiplying top and bottom by $\Vx{\sqrt{3\vphantom k}}$, we have $\dfrac{6}{5\sqrt3} = \dfrac{6\cdot\Vx{\sqrt3}}{5\sqrt3 \cdot \Vx{\sqrt3}} = \dfrac{6\sqrt3}{5\cdot3}$ since $\sqrt{3\vphantom k}\cdot\sqrt{3\vphantom k}=3$. Notice that we can now cancel out a $3$ in the numerator and denominator, and we are left with $\boxed{\dfrac{2\sqrt3}{5}}$, which is fully simplified.
+</Fragment>
+</DRP2>
+
+<PNT>
+
+If your denominator looks like <H>$a+b\sqrt{c\vphantom{k}}$</H> when simplified (for $a,b,c\in\mathbb Q$), multiply the numerator and the denominator by the denominator's <V>**conjugate**</V>, $\V{a-b\sqrt{c\vphantom{k}}}$. <Tn><S>_Why does this work?_</S><Fragment slot="tip">This works because of the <Vx>**difference of squares factoring**</Vx>, which gives us $\Vx{(a+b\sqrt{c\vphantom{k}})(a-b\sqrt{c\vphantom{k}}) = a^2-b^2c}\ \in\ \mathbb Q$.</Fragment></Tn>
+
+</PNT>
+
+<PNT_A>
+
+Note that this also applies for denominators like $a\sqrt b+c\sqrt d$, but more complex ones will require more work. (See examples & exercises.)
+
+</PNT_A>
+
+<DRP2>
+<M2>SEE IT</M2>Simplify $\dfrac{2}{3+4\sqrt2}$.
+<Fragment slot="drop">
+
+Multiplying top and bottom by $\Vx{3-4\sqrt2}$, we have $\dfrac{2}{3+4\sqrt2}=\dfrac{2\cdot\Vx{(3-4\sqrt2)}}{(3+4\sqrt2)\cdot\Vx{(3-4\sqrt2)}}$.
+
+The numerator equals $6-8\sqrt2$ after distributing the $2$. The denominator, by difference of squares, equals $3^2-(4\sqrt2)^2=9-16\cdot2=-23$.
+
+So all in all, we have $\dfrac{6-8\sqrt2}{-23}=\boxed{\dfrac{8\sqrt2}{23}}$.
+</Fragment>
+</DRP2>
+
+### Examples & Exercises
+
+More examples to be added, + more exercises, including harder denominators
+
+### Synopsis
+
+But why? What's the point? 
+Also note this also works with complex numbers
+
+### See also
+
+None yet!
+
+loading screen/tooltips/quotes/quips/remarks....

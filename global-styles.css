@@ -41,9 +41,11 @@
   /* --bright-green: #a5d4a7; */
   --subdued-green: #9dc09d88;
   --darker-green-text: #9eb39e;
+  --even-darker-green-text: #586558;
   --trans-og-green-darker: #bfe6ba46;
   --trans-og-purple: #b1b2c3cb;
   --very-trans-og-purple: #b1b2c328;
+  --trans-og-yellow: #ffd0a154;
 
   /*Other Colors*/
 
@@ -268,7 +270,7 @@ BLOG
   font-weight: 500;
 }
 
-.blog .posts {
+.blog .posts, .speck .posts {
   padding: var(--wp-spacing-20) var(--wp-spacing-30);
   
   font-family: 'Space Mono', monospace;
@@ -284,7 +286,7 @@ BLOG
   font-style: italic;
 }
 
-.blog .posts a {
+.blog .posts a, .speck .posts a {
   text-decoration: none;
   color: inherit;
 
@@ -294,13 +296,15 @@ BLOG
   0px 0px 1px var(--bright-og-orange);
   
   transition: letter-spacing 0.2s ease, font-weight 0.3s ease;
+  overflow: visible;
+  text-wrap: nowrap;
 }
-.blog .posts a:hover {
+.blog .posts a:hover, .speck .posts a:hover {
   color: var(--bright-og-orange);
   font-weight: 700;
   letter-spacing: 0.8px;
 }
-.blog .posts a:active {
+.blog .posts a:active, .speck .posts a:active {
   letter-spacing: 3px;  
 }
 
@@ -401,8 +405,10 @@ POSTS
 .rainbowed:hover {
   transform: rotate(-1deg);
 }
-.vocab {
+.vocab, .vocab-plain {
   color: var(--bright-og-orange);
+}
+.vocab {
   font-weight: 900;
   font-style: italic;
   font-size: 1.2em;
@@ -422,6 +428,9 @@ POSTS
   0px 0px 1px var(--bright-og-orange);
   
   transition: letter-spacing 0.2s ease, font-weight 0.3s ease;
+}
+.content a[href^="http"]:not(:has(img))::after {
+  content: "↗";
 }
 /* .content a:link {
 
@@ -578,6 +587,39 @@ POSTS
   }
 }
 
+.dropdown-2-summary {
+  position: relative;
+}
+.dropdown-2-summary::before {
+  content: "➺";
+  left: -1.5em;
+  top: .15em;
+  font-size: 1.2em;
+  position: absolute;
+  color: var(--darker-green-text);
+  transition: font-size 0.25s ease, left 0.25s ease;
+}
+.dropdown-2 {
+  transition: background-color 0.2s ease-out, padding 0.2s ease, border-radius 0.2s ease;
+}
+.dropdown-2-content {
+  display: none;
+  color: var(--even-darker-green-text);
+}
+.dropdown-2:hover .dropdown-2-content {
+  display: block;
+  margin-top: calc(0.7 * var(--wp-spacing-20));
+}
+.dropdown-2:hover .dropdown-2-summary::before {
+  left: -2.5em;
+  top: 0em;
+  font-size: 1.5em;
+}
+.dropdown-2:hover {
+  background-color: var(--trans-og-green);
+  padding: 1em 2em;
+  border-radius: 30px;
+}
 
 .bar {
   border: .1rem solid var(--og-red);
@@ -743,7 +785,7 @@ POSTS
     z-index: 100;
 
     color: var(--og-green);
-    font-size: var(--wp-font-size-small);
+    font-size: calc(1.2 * var(--wp-font-size-small));
     letter-spacing: 0.2px;
     font-weight: 400;
     font-style: normal;
@@ -1082,6 +1124,98 @@ POSTS
   text-transform: uppercase;
   font-family: 'Space Mono';  
   letter-spacing: 2px;
+}
+/* .mini-heading::after {
+  content: "▸";
+  margin-left: .5em;
+  color: var(--og-purple);
+  font-size: 1.2em;
+} */
+/* .mini-heading::before {
+  content: "▸";
+  margin-right: .5em;
+  color: var(--og-purple);
+  font-size: 1.2em;
+} */
+.mini-heading-2 {
+  color: var(--light-og-red);
+  text-transform: uppercase;
+  font-family: 'Space Mono';  
+  letter-spacing: 2px;
+  font-size: 1.1em;
+}
+.mini-heading-2::after {
+  content: "✽";
+  margin: 0px .6rem;
+  color: var(--light-og-red);
+  font-size: 1.1em;
+}
+.specks header h1 {
+  width: 100vw;
+  font-family: 'Syne', sans-serif;
+  color: var(--bright-og-orange);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: var(--wp-font-size-large);
+  padding: var(--wp-spacing-30) var(--wp-spacing-30);
+  background-image: var(--gradient-panel);
+  margin-bottom: var(--wp-spacing-20);
+}
+.specks header h1::before {
+  content: "speck";
+  position: absolute;
+  right: 0%;
+  font-family: "Ibarra Real Nova";
+  font-style: italic;
+  font-size: var(--wp-font-size-xxx-large);
+  color: var(--og-orange);
+  opacity: 20%;
+  pointer-events: none;
+  transition: letter-spacing 0.5s ease;
+}
+.specks header h1:hover::before {
+  letter-spacing: 15px;
+}
+.specks h3 {
+  font-family: 'Ibarra Real Nova', serif;
+  color: var(--bright-og-red);
+  background-color: var(--trans-og-red);
+  font-style: italic;
+  font-weight: 550;
+  letter-spacing: 0.2px;
+  font-size: calc(1.2 * var(--wp-font-size-medium));
+  padding: 11px var(--wp-spacing-30);  
+  border-radius: 300px;
+}
+.point {
+  display: block;
+  margin-left: 4em;
+  position: relative;
+}
+.point::before {
+  content: "●";
+  color: var(--bright-og-red);
+  position: absolute;
+  left: -2.2em;
+}
+.point-arrow {
+  display: block;
+  margin-left: 5em;
+  position: relative;
+  color: var(--reduced-og-red);
+}
+.point-arrow::before {
+  content: "⤷";
+  /* color: var(--og-red); */
+  /* color: var(--bright-og-red); */
+  position: absolute;
+  left: -2.2em;
+}
+.highlight {
+  background-color: var(--trans-og-yellow);
+  border-radius: 50px;
+  padding: .3em .6em;
 }
 
 /*-----------------------------
@@ -1584,7 +1718,8 @@ Katex formatting
 
 .katex {
   /* font-size: 0.95em !important; */
-  font-size: calc(1.10 * var(--wp-font-size-small));
+  /* font-size: calc(1.10 * var(--wp-font-size-small)); */
+  font-size: 1.1em;
   text-rendering: optimizeLegibility;
 }
 .med-katex .katex {
