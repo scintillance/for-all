@@ -1,0 +1,78 @@
+---
+import "/global-styles.css"; 
+const slotNames = Object.keys(Astro.slots);
+const tabSlots = slotNames.filter((name) => name.startsWith('tab-'));
+---
+
+<style>
+    .tabs-buttons {
+        display: flex;
+        gap: .4em;
+        margin-top: 2em;
+    }
+    .tab-button {
+        padding: 1em 2em;
+        border: none;
+        font-size: calc(.8 * var(--wp-font-size-medium));
+    }
+    .button-active {
+        color: var(--reduced-og-red);
+        font-style: italic; 
+    }
+</style>
+
+<div class="tabs-container">
+    <div class="tabs-content">
+        {tabSlots.map((name) => (
+            <div class="tab-content" data-tab={name}>
+                {/* <slot name={name} /> */}
+                <Fragment set:html={Astro.slots.render(name)} />
+            </div>
+        ))}
+    </div>
+    <div class="tabs-buttons">
+        {tabSlots.map((name) => (
+            <button class="tab-button" data-tab={name}>
+                {name.replace('tab-', 'Page ')}
+            </button>
+        ))}
+    </div>
+</div>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    const buttons = document.querySelectorAll('.tab-button') as NodeListOf<HTMLButtonElement>;
+    const contents = document.querySelectorAll('.tab-content') as NodeListOf<HTMLElement>;
+
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            buttons.forEach(btn => btn.classList.remove('button-active'));
+            button.classList.add('button-active');
+            
+            const tabName = button.dataset.tab;
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            const selectedContent = document.querySelector(`.tab-content[data-tab="${tabName}"]`) as HTMLElement | null;
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+                scrollToTop();
+            }
+        });
+    });
+
+    if (contents.length > 0) {
+        contents[0].style.display = 'block';
+        buttons[0].classList.add('button-active');
+    }
+</script>  

@@ -6,82 +6,135 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
 
 ---
 <style>
-.slider-capsule {
-  margin-bottom: 20px;
+  .slider-capsule {
+    margin-bottom: 20px;
 
-  padding: 12px 30px 30px 30px;
-  border-radius: 60px;
-  
-  font-family: 'Space Mono', monospace;
-}
-.right-triangle-results {
-  flex: 1 1 240px;
-}
-.right-triangle-results p {
-  text-wrap: nowrap !important;
-}
-@media screen and (max-width: 636px) {
-  .slider-container {
-    padding: .8em 1.4em 1.4em 1.4em;
-    margin-top: 1em;
+    padding: 12px 30px 30px 30px;
+    border-radius: 60px;
+    
+    font-family: 'Space Mono', monospace;
   }
-}
-@media screen and (max-width: 697.5px) {
-  /* .right-triangle-results {
-    margin: 0px 1em 1em 1em;
-  } */
-  .right-triangle-results * {
-    text-align: center;
+  .right-triangle-results {
+    flex: 1 1 240px;
   }
-}
+  .right-triangle-results p {
+    text-wrap: nowrap !important;
+  }
+  @media screen and (max-width: 636px) {
+    #lengthSliderCap {
+      padding: .8em 1.4em 1.4em 1.4em;
+      margin-top: 1em;
+    }
+  }
+  @media screen and (max-width: 855.5px) {
+    /* .right-triangle-results {
+      margin: 0px 1em 1em 1em;
+    } */
+    .right-triangle-results * {
+      text-align: center;
+    }
+  }
+  #triangleContainer {
+    position: relative;
+  }
+  #angleSliderCap {
+    transform-origin: top left;
+    rotate: -90deg;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translateX(-120%) translateY(-120%);
+    width: 50%;
+  }
+  #angleSlider {
+    orient: vertical;
+  }
+  @media screen and (max-width: 1106px) {
+    #angleSliderCap {
+      position: absolute;
+      transform: translateY(26%) translateX(-176%);
+      width: 280px;
+      height: 91px;
+    }
+    .workspace {
+      margin-left: 7.65em;
+    }
+  }
+  @media screen and (max-width: 855.5px) {
+    #angleSliderCap {
+      transform: translateY(26%) translateX(-140%);
+      width: 500px;
+    }
+  }
+  @media screen and (max-width: 536px) {
+    #angleSliderCap {
+      position: static;
+      transform: none;
+      rotate: none;
+      width: 100%;
+    }
+    .workspace {
+      margin-left: 0;
+    }
+  }
 </style>
 
 <!-- Main demo container -->
 <div class="spacing-as-container">
 <div class="contained-tab">trinket</div> 
-<div class="container offset underlay-background">
+<div id="triangleContainer" class="container offset underlay-background">
   <span class="contained-title">right triangle demo</span>
+
+  <!-- Length slider -->
+  <div id="lengthSliderCap" class="capsule slider-capsule red-label">
+    <label for="lengthSlider">Length: <span id="lengthValue">180</span></label>
+    <input type="range" id="lengthSlider" min="70" max="250" value="180" step="1">
+  </div>
   
-  <!-- Angle slider -->
-  <div class="capsule slider-capsule yellow">
-    <label for="angleSlider">Angle (θ): <span id="angleValue">30</span></label>
-    <input type="range" id="angleSlider" min="1" max="89" value="30" step="1">
+  <div id="angleAndWorkspace">
+    <!-- Angle slider -->
+    <div id="angleSliderCap" class="capsule slider-capsule yellow">
+      <label for="angleSlider">Angle (θ): <span id="angleValue">30</span></label>
+      <input type="range" id="angleSlider" min="1" max="89" value="30" step="1">
+    </div>
+
+    <!-- Window & text workspace -->
+    <div class="workspace">
+      
+      <!-- Triangle SVG window -->
+      <div class="grid inset-window">
+        <svg id="triangleSvg" width="100%" height="250" viewBox="30 0 300 240" style="background: transparent; display: block;">
+
+          <!-- Triangle path -->
+          <polygon id="triangle" points="" class="mint-poly" />
+          
+          <!-- Right angle mark -->
+          <path id="rightAngleMark" d="M 230 200 L 230 190 L 240 190" class="stroke mint"/>
+          
+          <!-- Text labels -->
+          <text id="lblHypotenuse" class="svg-label ta-mid red-label">Hypotenuse</text>
+          <text id="lblOpposite" class="svg-label ta-start green-label">Opposite</text>
+          <text id="lblAdjacent" class="svg-label ta-mid purple-label">Adjacent</text>
+          <text id="lblTheta" fill="var(--yellow)" font-weight="bold" font-size="14">θ</text>
+        
+        </svg>
+      </div>
+        
+      <!-- Side Lengths & Ratios display -->
+      <div class="right-triangle-results monospace-results">
+        <h2 class="contained-heading">Side Lengths & Ratios</h2>
+        <p> <Hyp>Hypotenuse</Hyp> = <span id="valHyp" class="red-label cartouche">0.00</span></p>
+        <p> <Opp>Opposite</Opp> = <span id="valOpp" class="green-label cartouche">0.00</span></p>
+        <p> <Adj>Adjacent</Adj> = <span id="valAdj" class="purple-label cartouche">0.00</span></p>
+        <hr class="spacing-as-monospace-results">
+        <p> <Opp>Opposite</Opp> / <Hyp>Hypotenuse</Hyp> = <span id="ratioSin" class="cartouche">0.00</span></p>
+        <p> <Adj>Adjacent</Adj> / <Hyp>Hypotenuse</Hyp> = <span id="ratioCos" class="cartouche">0.00</span></p>
+        <p> <Opp>Opposite</Opp> / <Adj>Adjacent</Adj> = <span id="ratioTan" class="cartouche">0.00</span></p>
+      </div>
+
+    </div>
   </div>
 
-  <!-- Window & text workspace -->
-  <div class="workspace">
-    
-    <!-- Triangle SVG window -->
-    <div class="grid inset-window">
-      <svg id="triangleSvg" width="100%" height="250" viewBox="0 0 300 250" style="background: transparent; display: block;">
-
-        <!-- Triangle path -->
-        <polygon id="triangle" points="" class="mint-poly" />
-        
-        <!-- Right angle mark -->
-        <path id="rightAngleMark" d="M 230 200 L 230 190 L 240 190" class="stroke mint"/>
-        
-        <!-- Text labels -->
-        <text id="lblHypotenuse" class="svg-label ta-mid red-label">Hypotenuse</text>
-        <text id="lblOpposite" class="svg-label ta-start green-label">Opposite</text>
-        <text id="lblAdjacent" class="svg-label ta-mid purple-label">Adjacent</text>
-        <text id="lblTheta" fill="var(--yellow)" font-weight="bold" font-size="14">θ</text>
-      
-      </svg>
-    </div>
-      
-    <!-- Side Lengths & Ratios display -->
-    <div class="right-triangle-results monospace-results">
-      <h2 class="contained-heading">Side Lengths & Ratios</h2>
-      <p> <Hyp>Hypotenuse</Hyp> = <span id="valHyp" class="red-label cartouche">0.00</span></p>
-      <p> <Opp>Opposite</Opp> = <span id="valOpp" class="green-label cartouche">0.00</span></p>
-      <p> <Adj>Adjacent</Adj> = <span id="valAdj" class="purple-label cartouche">0.00</span></p>
-      <hr class="spacing-as-monospace-results">
-      <p> <Opp>Opposite</Opp> / <Hyp>Hypotenuse</Hyp> = <span id="ratioSin" class="cartouche">0.00</span></p>
-      <p> <Adj>Adjacent</Adj> / <Hyp>Hypotenuse</Hyp> = <span id="ratioCos" class="cartouche">0.00</span></p>
-      <p> <Opp>Opposite</Opp> / <Adj>Adjacent</Adj> = <span id="ratioTan" class="cartouche">0.00</span></p>
-    </div>
-  </div>
 </div>
 
 <!-- Container underneath with text -->
@@ -98,8 +151,10 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
 <script>
 (function() {
   // --- DOM selectors ---
-  const slider = document.getElementById('angleSlider')! as HTMLInputElement;
+  const angleSlider = document.getElementById('angleSlider')! as HTMLInputElement;
+  const lengthSlider = document.getElementById('lengthSlider')! as HTMLInputElement;
   const angleValue = document.getElementById('angleValue')!;
+  const lengthValue = document.getElementById('lengthValue')!;
   const triangle = document.getElementById('triangle')!;
   
   const lblHyp = document.getElementById('lblHypotenuse')!;
@@ -115,9 +170,6 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
   const ratioTan = document.getElementById('ratioTan')!;
   const mark = document.getElementById('rightAngleMark')!;
 
-  // Fixed hypotenuse length
-  const hypLength = 180; 
-
   // SetAttribute helper function
   function setAttr(element: Element, attr: string, value: string | number) {
 	element.setAttribute(attr, String(value));
@@ -125,8 +177,11 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
 
   // --- Animation loop ---
   function updateDemo() {
-    const degrees = parseInt(slider.value);
+    const degrees = parseInt(angleSlider.value);
+    const hypLength = parseInt(lengthSlider.value);
+
     angleValue.textContent = `${degrees}°`;
+    lengthValue.textContent = hypLength.toFixed(0);
 
     // Calculate trig
     const radians = degrees * (Math.PI / 180);
@@ -151,7 +206,7 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
     // Redraw triangle polygon
     setAttr(triangle, 'points', `${thetaX},${thetaY} ${rightAngleX},${rightAngleY} ${topX},${topY}`);
 
-    // Redraw right angle (if there is enough space)
+    // Redraw right angle mark (if there is enough space)
     if ((degrees > 4) && (degrees < 86)) {
       setAttr(mark, 'd', `M ${rightAngleX - 10} ${rightAngleY} L ${rightAngleX - 10} ${rightAngleY - 10} L ${rightAngleX} ${rightAngleY - 10}`);
     } else {
@@ -159,10 +214,11 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
     }
     
     // Update display
+    
     valHyp.textContent = hypLength.toFixed(0);
     valOpp.textContent = oppositeSide.toFixed(0);
     valAdj.textContent = adjacentSide.toFixed(0);
-
+    
     ratioSin.textContent = sinValue.toFixed(3);
     ratioCos.textContent = cosValue.toFixed(3);
     ratioTan.textContent = tanValue.toFixed(3);
@@ -174,7 +230,7 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
     setAttr(lblHyp, 'x', hypMidX);
     setAttr(lblHyp, 'y', hypMidY);
     
-    lblHyp.style.transform = `rotate(${-degrees}deg) translate(0px, -12px)`; // Rotate label of hypotenuse to match its angle
+    lblHyp.style.transform = `rotate(${-degrees}deg) translate(0px, -15px)`; // Rotate label of hypotenuse to match its angle
     lblHyp.style.transformOrigin = `${hypMidX}px ${hypMidY}px`;
     
     setAttr(lblOpp, 'x', rightAngleX + 10);
@@ -194,8 +250,11 @@ import Adj from "../text-inline-comps/Label-Purple.astro";
   }
 
   // Update screen when the slider changes
-  slider.addEventListener('input', updateDemo);
-  slider.addEventListener('change', updateDemo);
+  angleSlider.addEventListener('input', updateDemo);
+  angleSlider.addEventListener('change', updateDemo);
+
+  lengthSlider.addEventListener('input', updateDemo);
+  lengthSlider.addEventListener('change', updateDemo);
 
   // Run once after the component has mounted so the initial state is drawn immediately
   requestAnimationFrame(() => updateDemo());

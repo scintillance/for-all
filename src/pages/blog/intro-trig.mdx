@@ -6,15 +6,19 @@ date: 2026-07-07
 featuredimage: "../images/disc.png"
 ---
 
+<WIP/>
+
+<Tabber>
+<Fragment slot="tab-1"> 
+
 <RightTriangleTrinket>
 
-<Si>As a preview for this post</Si>, play around with this trinket! Notice how **changing one of the angles** in a right triangle affects the **ratios of its sides**.
-
-Here, we fix the hypotenuse of the right triangle to have a length of 180. _What would happen to the ratios if we changed this length?_
+<Si>As a preview for this post</Si>, play around with this trinket! How does **changing one of the angles** in a right triangle (here called $\Y{\theta}$) affect the different <C>**ratios of its sides**</C>? What does changing the **length** of one of the sides (here, the <Hy>hypotenuse</Hy>) do?
 
 </RightTriangleTrinket>
 
-<UnitCircleTrinket/>
+</Fragment>
+<Fragment slot="tab-2"> 
 
 ### intro to | _Trigonometry_
 
@@ -29,8 +33,7 @@ Trig isn't as hard as it seems. Why don't you join me?
 ### the earliest times
 <ASK>
 <span class="symbol">◿</span> 
-Right triangle trig 
-(intro to sin & cos)
+Sin & cos for right triangles
 </ASK>
 
 <Si>We'll start with <u>triangles</u>.</Si> Let's look at the easiest-to-measure triangles: **_right triangles_**.
@@ -55,7 +58,7 @@ Specifically, we want to relate the **angles** to the **sides**. For example, if
 <text class="svg-label ta-end faux-latex l-red" x="35" y="140">2</text>
 <path d="M 331.377,224 A 20 20 0 0 1 334.056,214" class="stroke yellow sl-round" />
 <text class="yellow faux-latex ta-mid" x="285" y="215">30°</text>
-<Fragment slot="fig">Surely we can figure this out...</Fragment>
+<Fragment slot="fig">Surely we can figure this out...<Note>I mean, think about **physically building** this triangle. No matter how we go about it, we'd always end up with the same angles and sides, right? The information given is _restrictive_ enough that all the other details of the triangle can be found from it. _But how?..._</Note></Fragment>
 </Diagram_T>
 
 <BTW_R>Well, think about this: **scaling up or down a triangle both <P>keeps its angles</P> and <P>scales its sides by a common factor</P>.**<Fragment slot="btw">These scaled triangles are called <V>similar triangles</V>.</Fragment></BTW_R> Also, one angle in a right triangle is already 90 degrees. That means if you know one other angle, then you can figure out what all 3 angles are, which means you know exactly how the triangle looks. <S>(The third angle is $180^\circ - 90^\circ-\text{known angle}$, since angles sum up to 180 degrees in a triangle.)</S> The only information you don't have is how the right triangle is _scaled_. You could be dealing with any number of similar triangles!
@@ -142,14 +145,14 @@ A right triangle with angle $\theta$ (theta) labelled. Relative to $\theta$, we 
 Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>.
 
 <RBW>
-<ASK_II>
+<ASK2>
     $$ 
     \sin(x) = \frac{\text{\Op{opposite leg's length}}}{\text{\Hy{hypotenuse's length}}}
     $$
     <Fragment slot="askew">
         <span style="color: var(--og-purple);">Sine</span> : simple definition
     </Fragment>
-</ASK_II>
+</ASK2>
 </RBW>
 
 <Diagram_T w="400" h="270">
@@ -170,19 +173,19 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 
 In the above example with our $30$-degree right triangle, if we actually built a triangle with those measurements, it would have a <Hy>hypotenuse</Hy> of $\Hy4$. The leg <Op>opposite</Op> the $30\Deg$ angle is the shorter leg, which had length $\Op2$. Therefore we say $\sin (30^\circ) = \dfrac{\Op2}{\Hy4} = \dfrac12$.
 
-Assigning a unique value ($1/2$) to an angle ($30\Deg$) makes sense because if we took _any other right triangle_ with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\dfrac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P>. This is just what we need!
+Assigning a unique value ($1/2$) to an angle ($30\Deg$) makes sense because if we took _any other right triangle_ with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\dfrac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P> associated with it. This is just what we need!
 
 That's just 1 angle, though... We can similarly define the <V>cosine</V> of angle x, or $\V{\cos x}$, to be the length ratio of the <Ad>adjacent</Ad> leg over the <Hy>hypotenuse</Hy>.
 
 <RBW>
-<ASK_II>
+<ASK2>
     $$
     \cos(x)=\frac{\text{\Ad{adjacent leg's length}}}{\text{\Hy{hypotenuse's length}}}
     $$
     <Fragment slot="askew">
         <span style="color: var(--og-purple);">Cosine</span> : simple definition
     </Fragment>
-</ASK_II>
+</ASK2>
 </RBW>
 
 <DRP>
@@ -223,7 +226,7 @@ We see that, _relative to angle_ $y$, the side with length $\Op3$ is <Op>opposit
 
 <M>Given an Angle</M>Now, it's simple to compute a certain $\sin$ or $\cos$ given the **sides** of a triangle (as above), but harder to get it from just the **angle**. Like, _What's the sine of 17.2 degrees?_ If we knew some side lengths of a right triangle with an angle of $17.2\Deg$, we'd be able to find $\sin(17.2\Deg)$, but right now we're lost.
 
-Truth is, the sines and cosines for most angles are <Tn>weird numbers without nice mathematical representations.<Fragment slot="tip">They are **_irrational_**.</Fragment></Tn> Instead of finding them ourselves, we use a calculator!
+Truth is, the sines and cosines for most angles are <Tn>weird numbers without nice mathematical representations.<Fragment slot="tip">They are **_transcendental_** (not the solution to some polynomial in $\mathbb Q[x]$).</Fragment></Tn> Instead of finding them ourselves, we use a calculator!
 
 <br/><S>You can think of it like some nice guy sat down and built right triangles of every angle, measuring the sides with a ruler and filling in the table of sines and cosines. :) <Note>You'll see later on (not in this lesson) how the sine and cosine of _any_ angle can be found mathematically. It's not easy!</Note></S>
 
@@ -358,6 +361,9 @@ Psst... click here to see this post's _**whisper**_ $:)$
 
 Just a reminder: If it's late at night... you should go to sleep! You need it, trust me. Love you all~ ^^
 
+</Fragment>
+<Fragment slot="tab-3"> 
+
 ### it was circles all along
 
 What about the sine and cosine of angles that _don't fit into a right triangle_? Right now we can't find $\sin90^\circ$ or $\cos135^\circ$ or anything like that. Are these even defined?
@@ -415,3 +421,5 @@ Also, we knew $\sin(t) = \cos(90-t)$. Explain why this is still true visually wi
 
 s
 
+</Fragment>
+</Tabber>

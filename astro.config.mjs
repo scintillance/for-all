@@ -48,6 +48,7 @@ export default defineConfig({
             "\\Hyp": "\\text{\\Hy{hypotenuse}}",
             "\\Adj": "\\text{\\Ad{adjacent}}",
             "\\Deg": "^\\circ",
+            "\\Y": "{\\color{e0bb6c}#1}",
           }
         }]
       ],
@@ -64,7 +65,9 @@ export default defineConfig({
         './src/components/pieces-comps/Diagram-Grid.astro': [['default', 'Diagram']],
         './src/components/pieces-comps/Diagram-Trans.astro': [['default', 'Diagram_T']],
         './src/components/pieces-comps/Right-Triangle-Trinket.astro': [['default', 'RightTriangleTrinket']],
+        './src/components/pieces-comps/Tabber.astro': [['default', 'Tabber']],
         './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
+        './src/components/pieces-comps/WIP.astro': [['default', 'WIP']],
 
         './src/components/text-bits-comps/Tooltip-Challenge.astro': [['default', 'Challenge']],
         './src/components/text-bits-comps/Tooltip-Formally.astro': [['default', 'Formally']],
@@ -72,7 +75,7 @@ export default defineConfig({
         './src/components/text-bits-comps/Tooltip-Note.astro': [['default', 'Note']],
 
         './src/components/text-block-comps/Askew.astro': [['default', 'ASK']],
-        './src/components/text-block-comps/Askew2.astro': [['default', 'ASK_II']],
+        './src/components/text-block-comps/Askew2.astro': [['default', 'ASK2']],
         './src/components/text-block-comps/ByTheWay-R.astro': [['default', 'BTW_R']],
         './src/components/text-block-comps/Dropdown.astro': [['default', 'DRP']],
         './src/components/text-block-comps/Dropdown2.astro': [['default', 'DRP2']],
@@ -85,6 +88,7 @@ export default defineConfig({
         './src/components/text-block-comps/Rainbowed.astro': [['default', 'RBW']],
         './src/components/text-block-comps/Solution.astro': [['default', 'SOL']],
 
+        './src/components/text-inline-comps/Cartouche.astro': [['default', "C"]],
         './src/components/text-inline-comps/Highlight.astro': [['default', "H"]],
         './src/components/text-inline-comps/Label-Purple.astro': [['default', "Ad"]],
         './src/components/text-inline-comps/Label-Green.astro': [['default', "Op"]],
