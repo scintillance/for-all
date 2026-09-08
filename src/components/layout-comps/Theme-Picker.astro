@@ -1,0 +1,94 @@
+---
+import "/global-styles.css"; 
+---
+<style>
+.theme-buttons-wrapper {
+    position: absolute;
+    right: 3%;
+    /* bottom: -20%; */
+    bottom: -130%;
+}
+.theme-buttons {
+    position: absolute;
+    right: 10%;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1em;
+}
+.theme-button {
+    background-color: transparent;
+    border: white solid 1px;
+    padding: .5em 1em;
+    border-radius: 100%;
+    font-family: "Space Mono", monospace;
+    color: white;
+    transition: padding 0.25s ease;
+}
+.theme-button:hover {
+    padding: .7em 1em;
+}
+.theme-button:hover+.theme-button:not(:hover) {
+    padding: .3em 1em;
+}
+.theme-button-active {
+    border: none;
+    background-color: rgb(255,255,255,.7);
+    color: var(--og-black);
+}
+</style>
+
+<div class="theme-buttons-wrapper">
+    <div class="theme-buttons">
+        <button type="button" class="theme-button" id="#theme-scintilla-button">
+            Colorful
+        </button>
+        <button type="button" class="theme-button" id="#theme-white-button">
+            White
+        </button>
+        <button type="button" class="theme-button" id="#theme-black-button">
+            Black
+        </button>
+    </div>
+
+</div>
+
+<script>
+(function() {
+    const buttons = document.querySelectorAll(".theme-button") as NodeListOf<HTMLElement>;
+    const allElements = document.querySelectorAll(":not(.foo)");
+
+    function resolveTheme(button: HTMLElement) {
+        if (button.textContent=="Colorful") {
+            allElements.forEach(element => {
+                element.classList.remove("theme-white", "theme-black");
+                element.classList.add("theme-scintilla");
+            })
+        } else if (button.textContent=="White") {
+            allElements.forEach(element => {
+                element.classList.remove("theme-scintilla", "theme-black");
+                element.classList.add("theme-white");
+            })
+        } else if (button.textContent=="Black") {
+            allElements.forEach(element => {
+                element.classList.remove("theme-white", "theme-scintilla");
+                element.classList.add("theme-black");
+            })
+        }
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            buttons.forEach(button => button.classList.remove("theme-button-active"));
+            button.classList.add("theme-button-active");
+
+            resolveTheme(button);
+        })
+    })
+
+    if (buttons.length > 0) {
+        buttons[0].classList.add('theme-button-active');
+        resolveTheme(buttons[0]);
+    }
+    
+})();
+</script>
