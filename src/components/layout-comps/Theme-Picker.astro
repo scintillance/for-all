@@ -6,7 +6,7 @@ import "/global-styles.css";
     position: absolute;
     right: 3%;
     /* bottom: -20%; */
-    bottom: -130%;
+    bottom: -255%;
 }
 .theme-buttons {
     position: absolute;
@@ -17,11 +17,11 @@ import "/global-styles.css";
 }
 .theme-button {
     background-color: transparent;
-    border: white solid 1px;
     padding: .5em 1em;
+    border: var(--og-black) solid 1px;
+    color: var(--og-black);
     border-radius: 100%;
     font-family: "Space Mono", monospace;
-    color: white;
     transition: padding 0.25s ease;
 }
 .theme-button:hover {
@@ -31,16 +31,30 @@ import "/global-styles.css";
     padding: .3em 1em;
 }
 .theme-button-active {
-    border: none;
-    background-color: rgb(255,255,255,.7);
-    color: var(--og-black);
+    border: white solid 1px;
+    background-color: #00000077;
+    color: white;
+}
+@media screen and (max-width: 1100px) {
+    .theme-buttons-wrapper {
+        bottom: -100%;
+    }
+    .theme-button {
+        border: white solid 1px;
+        color: white;
+    }
+    .theme-button-active {
+        background-color: rgb(255,255,255,.7);
+        color: var(--og-black);
+    }
+    .
 }
 </style>
 
 <div class="theme-buttons-wrapper">
     <div class="theme-buttons">
         <button type="button" class="theme-button" id="#theme-scintilla-button">
-            Colorful
+            Original
         </button>
         <button type="button" class="theme-button" id="#theme-white-button">
             White
@@ -58,7 +72,7 @@ import "/global-styles.css";
     const allElements = document.querySelectorAll(":not(.foo)");
 
     function resolveTheme(button: HTMLElement) {
-        if (button.textContent=="Colorful") {
+        if (button.textContent=="Original") {
             allElements.forEach(element => {
                 element.classList.remove("theme-white", "theme-black");
                 element.classList.add("theme-scintilla");

@@ -146,6 +146,7 @@
   --color-text-vocab: var(--bright-og-orange);
   --color-text-askew: var(--reduced-og-purple);
   --color-text-askew-standout: var(--og-purple);
+  --color-title-neue: var(--color-mintlabelled);
 
   --color-dropdown-closed: var(--light-og-purple);
   --color-dropdown-open: var(--lighter-og-purple);
@@ -194,7 +195,7 @@
   --color-specks-header-background: var(--trans-og-red);
   --color-specks-arrow: var(--reduced-og-red);
   --color-dropdown-2-summary: var(--darker-green-text);
-  --color-dropdown-2-backgrond: var(--trans-og-green);
+  --color-dropdown-2-background: var(--trans-og-green);
   --color-dropdown-2-text: var(--even-darker-green-text);
 
   --grad-container: var(--gradient-container);
@@ -214,7 +215,7 @@
 
   --color-body-text: var(--black-text);
   --color-title: var(--pink-title);
-  --color-mini-heading: inherit;
+  --color-mini-heading: var(--black-accent);
   --color-mini-heading-2: inherit;
   /* --color-rare-light-accent: var(--purple-accent); */
   --color-rare-light-accent: var(--black-accent);
@@ -225,7 +226,8 @@
   /* --color-text-pullout: inherit; */
   --color-text-pullout: var(--pink-title);
   --color-text-vocab: inherit;
-  --color-text-askew: inherit;
+  --color-text-askew: var(--black-accent);
+  --color-title-neue: var(--color-title);
 
   --color-dropdown-closed: var(--black-accent);
   --color-dropdown-open: var(--black-accent);
@@ -303,6 +305,7 @@
   /* --color-text-pullout: rgb(255, 229, 229); */
   --color-text-pullout: var(--purple-title);
   --color-text-askew: inherit;
+  --color-title-neue: var(--color-title);
   
   --color-dropdown-closed: var(--black-accent);
   --color-dropdown-open: var(--black-accent);
@@ -363,7 +366,7 @@
   --color-container-text: inherit;
 
   --color-button-active-text: var(--subdued-white-text);
-  
+
   --color-world: var(--black-text);
 }
 
@@ -1456,7 +1459,6 @@ POSTS
   text-underline-offset: 2px;
   text-decoration-skip-ink: none;
 }
- 
 .label.theme-scintilla {
   /* font-family: "Pixelify Sans"; */
   /* font-weight: 500; */
@@ -1467,11 +1469,9 @@ POSTS
   font-size: 1.1em;
   font-weight: 600;
 }
-.label.theme-white {
-  color: var(--black-text);
-}
-.label.theme-black {
-  color: var(--white-text);
+.label:is(.theme-white,.theme-black) {
+  color: var(--color-body-text);
+  font-family: "Albert Sans", sans-serif;
 }
 .green-label {
   color: var(--color-greenlabelled);
@@ -1669,6 +1669,7 @@ POSTS
   left: 0;
   width: 100vw;
   padding: 2em 5em;
+  pointer-events: none;
 }
 .wip-spacer {
   margin-bottom: 200px;
@@ -1690,6 +1691,9 @@ HEADER
 
   border-bottom: 2px solid var(--og-red);
   position: relative;
+}
+.theme-white.main-header h1 {
+  font-size: calc(var(--wp-font-size-large) * .9);
 }
 .theme-black.main-header {
   background-color: var(--black);
@@ -1883,7 +1887,7 @@ INTERACTIVE
 }
 .contained-title {
   font-family: "Ibarra Real Nova";
-  color: var(--color-mintlabelled);
+  color: var(--color-title-neue);
   font-weight: 400;
   font-size: var(--wp-font-size-x-large);
 
@@ -1946,7 +1950,7 @@ INTERACTIVE
 }
 .monospace-results hr {
     border: 0;
-    border-top: 1px solid var(--dark-og-red);
+    border-top: 1px solid var(--color-body-text);
 }
 @media screen and (max-width: 636px) {
   .monospace-results {
@@ -2112,6 +2116,9 @@ Katex formatting
   font-size: 1.1em;
   text-rendering: optimizeLegibility;
 }
+.katex:is(.theme-white,.theme-black) :is(.mord,span) {
+  color: inherit !important;
+}
 .med-katex .katex {
   font-size: 1.5em;
 }
@@ -2125,3 +2132,25 @@ Katex formatting
 /* .katex-html {
   white-space: nowrap;
 } */
+
+/* OTHER THEMES */
+
+.theme-white:is(.content, .start, .startIt, p, .label, .dropdown-summary, .tab-button) {
+  /* font-family: 'Literata' !important; */
+  font-family: 'Rosarivo', serif !important;
+}
+.theme-white.monospace-results * {
+  font-family: 'Datatype', monospace !important;
+}
+.theme-white:is(h1, h2, h3, .contained-title, .svg-label, .nav-links *, .mini-heading, .mini-heading-2) {
+  font-family: 'Xanh Mono', monospace !important;
+}
+.theme-white:is(.askew2, .askew) * {
+  font-family: 'Xanh Mono', monospace !important;
+}
+.theme-white.byTheWay-text {
+  text-decoration: none;
+}
+.theme-white.problem-number {
+  font-family: 'Xanh Mono', monospace;
+}
