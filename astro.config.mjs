@@ -68,6 +68,7 @@ export default defineConfig({
         './src/components/pieces-comps/Tabber.astro': [['default', 'Tabber']],
         './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
         './src/components/pieces-comps/WIP.astro': [['default', 'WIP']],
+        './src/components/pieces-comps/XTabber.astro': [['default', 'XTabber']],
 
         './src/components/text-bits-comps/Tooltip-Challenge.astro': [['default', 'Challenge']],
         './src/components/text-bits-comps/Tooltip-Formally.astro': [['default', 'Formally']],

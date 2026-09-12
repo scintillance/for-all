@@ -8,7 +8,7 @@ featuredimage: "../images/disc.png"
 
 <WIP />
 
-<Tabber>
+<XTabber>
 <Fragment slot="tab-1"> 
 
 <RightTriangleTrinket>
@@ -219,6 +219,21 @@ Note that this is a right triangle, so we can use our formulas for $\sin$ and $\
 
 We see that, _relative to angle_ $y$, the side with length $\Op3$ is <Op>opposite</Op> and the side with length $\Ad4$ is <Ad>adjacent</Ad>. The <Hy>hypotenuse</Hy> of this right triangle has length $\Hy5$, so $\sin y = \dfrac \Opp\Hyp = \boxed{\frac35}$ and $\cos y = \dfrac \Adj\Hyp = \boxed{\frac45}$.
 
+<Diagram_T w="400" h="300">
+
+<polygon points="338,48 338,253 64.667,253" class="blue-poly" />
+<path d="M 338,233 L 318,233 L 318,253" class="stroke blue" />
+<path d="M 338,48 L 338,253" class="stroke green-label"/>
+<path d="M 338,253 L 64.667,253" class="stroke purple-label"/>
+<path d="M 64.667,253 L 338,48" class="stroke red-label"/>
+<text class="red-label svg-label ta-end faux-latex" x="193" y="130">5</text>
+<text class="purple-label svg-label faux-latex" x="200" y="280" >4</text>
+<text class="green-label svg-label ta-start faux-latex" x="354" y="150" >3</text>
+<path d="M 84.667,253 A 20 20 0 0 0 80.667,241" class="stroke yellow sl-round" />
+<text class="yellow svg-label faux-latex" x="120" y="234" >y</text>
+
+</Diagram_T>
+
 <br/><S>If we had picked any _similar_ right triangle—i.e., any other right triangle that this angle $y$ could make—the sides would simply be a scaled version of $3$, $4$, and $5$, and the ratios $\sin y$ and $\cos y$ would remain the same.</S>
 </SOL>
 
@@ -239,6 +254,31 @@ In right triangle $ABC$, the right angle is at vertex $C$, and there is a $17.2\
 </PRB>
 
 <SOL>
+<Tn>$\triangle ABC$<Fragment slot="tip">triangle ABC</Fragment></Tn> is shown below.
+
+<Diagram_T w="400" h="190">
+<polygon points="28.26,43 361,146 361,43" class="blue-poly"/>
+<path d="M 341,43 L 341,63 L 361,63" class="stroke blue"/>
+<text class="blue pt ta-end" x="24.26" y="39">A</text>
+<text class="blue pt ta-start tbe" x="365" y="150">B</text>
+<text class="blue pt ta-start" x="365" y="39">C</text>
+<path d="M 68.26,43 A 40 40 0 0 1 66.472,54.828" class="stroke yellow sl-round"/>
+<text class="yellow faux ta-start tbe" x="98.26" y="45">17.2°</text>
+<text class="blue faux ta-end tbe" x="194.63" y="94.5">10</text>
+</Diagram_T>
+
+From <Tn>$\angle A$<Fragment slot="tip">angle A (the angle at vertex A; we could also call it $\angle BAC$ or $\angle CAB$)</Fragment></Tn>, side $\overline{CB}$ is <Op>opposite</Op> and side $\overline{AC}$ is <Ad>adjacent</Ad> (these are the legs of the right triangle). And $\overline{AB}$ is the <Hy>hypotenuse</Hy> since it's the longest side. which has length $AB=10$.
+
+Using $\sin(\text{some angle})=\dfrac\Opp\Hyp$, we have $\sin(17.2\Deg)=\dfrac{\Op{CB}}{\Hy{AB}}=\dfrac{\Op{CB}}{\Hy{10}}$. But we were given the estimation $\sin(17.2) \approx 0.3$, so we can solve for $CB$:
+
+$$
+\begin{aligned}
+\frac{CB}{10} &= \sin(17.2) \approx 0.3 \\
+\implies CB &\approx 0.3 \cdot 10 \\
+\implies CB &\approx \boxed3.
+\end{aligned}
+$$
+ 
 </SOL>
 
 <Spa height="4"/>
@@ -422,4 +462,4 @@ Also, we knew $\sin(t) = \cos(90-t)$. Explain why this is still true visually wi
 s
 
 </Fragment>
-</Tabber>
+</XTabber>

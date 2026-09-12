@@ -1,0 +1,40 @@
+---
+import "/global-styles.css"; 
+const slotNames = Object.keys(Astro.slots);
+const tabSlots = slotNames.filter((name) => name.startsWith('tab-'));
+---
+
+<style>
+    .tabs-buttons {
+        display: flex;
+        gap: .4em;
+        margin-top: 2em;
+    }
+    .tab-button {
+        padding: 1em 2em;
+        border: none;
+        font-size: calc(.8 * var(--wp-font-size-medium));
+    }
+    .button-active {
+        color: var(--color-button-active-text);
+        font-style: italic; 
+    }
+</style>
+
+<div class="tabs-container">
+    <div class="tabs-content">
+        {tabSlots.map((name) => (
+            <div class="tab-content" data-tab={name}>
+                {/* <slot name={name} /> */}
+                <Fragment set:html={Astro.slots.render(name)} />
+            </div>
+        ))}
+    </div>
+    <div class="tabs-buttons">
+        {tabSlots.map((name) => (
+            <button class="tab-button" data-tab={name}>
+                {name.replace('tab-', 'Page ')}
+            </button>
+        ))}
+    </div>
+</div>

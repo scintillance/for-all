@@ -70,6 +70,7 @@ import "/global-styles.css";
 (function() {
     const buttons = document.querySelectorAll(".theme-button") as NodeListOf<HTMLElement>;
     const allElements = document.querySelectorAll(":not(.foo)");
+    const root = document.querySelector("html");
 
     function resolveTheme(button: HTMLElement) {
         if (button.textContent=="Original") {
@@ -99,7 +100,13 @@ import "/global-styles.css";
         })
     })
 
-    if (buttons.length > 0) {
+    if (root?.classList.contains('theme-white')) {
+        buttons[1].classList.add('theme-button-active');
+        resolveTheme(buttons[1]);
+    } else if (root?.classList.contains('theme-black')) {
+        buttons[2].classList.add('theme-button-active');
+        resolveTheme(buttons[2]);
+    } else {
         buttons[0].classList.add('theme-button-active');
         resolveTheme(buttons[0]);
     }

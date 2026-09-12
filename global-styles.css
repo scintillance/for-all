@@ -147,6 +147,7 @@
   --color-text-askew: var(--reduced-og-purple);
   --color-text-askew-standout: var(--og-purple);
   --color-title-neue: var(--color-mintlabelled);
+  --color-link: var(--bright-og-orange);
 
   --color-dropdown-closed: var(--light-og-purple);
   --color-dropdown-open: var(--lighter-og-purple);
@@ -228,6 +229,7 @@
   --color-text-vocab: inherit;
   --color-text-askew: var(--black-accent);
   --color-title-neue: var(--color-title);
+  --color-link: var(--pink-title);
 
   --color-dropdown-closed: var(--black-accent);
   --color-dropdown-open: var(--black-accent);
@@ -306,6 +308,7 @@
   --color-text-pullout: var(--purple-title);
   --color-text-askew: inherit;
   --color-title-neue: var(--color-title);
+  --color-link: var(--purple-title);
   
   --color-dropdown-closed: var(--black-accent);
   --color-dropdown-open: var(--black-accent);
@@ -588,16 +591,16 @@ BLOG
   color: inherit;
 
   text-shadow:
-  0px 0px 1px var(--bright-og-orange),
-  0px 0px 1px var(--bright-og-orange),
-  0px 0px 1px var(--bright-og-orange);
+  0px 0px 1px var(--color-link),
+  0px 0px 1px var(--color-link),
+  0px 0px 1px var(--color-link);
   
   transition: letter-spacing 0.2s ease, font-weight 0.3s ease;
   /* overflow: visible; */
   /* text-wrap: nowrap; */
 }
 .blog .posts a:hover, .speck .posts a:hover {
-  color: var(--bright-og-orange);
+  color: var(--color-link);
   font-weight: 700;
   letter-spacing: 0.8px;
 }
@@ -702,11 +705,12 @@ POSTS
 }
 .rainbowed.theme-white {
   background: var(--light-grey-trans);
+  border-radius: 0px;
 }
 .rainbowed .katex-display > .katex .katex-html {
   font-size: 1.1em;
 }
-.rainbowed:hover {
+.rainbowed:not(.theme-white):hover {
   transform: rotate(-1deg);
 }
 .vocab, .vocab-plain {
@@ -727,9 +731,9 @@ POSTS
   color: inherit;
 
   text-shadow:
-  0px 0px 1px var(--bright-og-orange),
-  0px 0px 1px var(--bright-og-orange),
-  0px 0px 1px var(--bright-og-orange);
+  0px 0px 1px var(--color-link),
+  0px 0px 1px var(--color-link),
+  0px 0px 1px var(--color-link);
   
   transition: letter-spacing 0.2s ease, font-weight 0.3s ease;
 }
@@ -743,7 +747,7 @@ POSTS
   
 }  */
 .content a:hover {
-  color: var(--bright-og-orange);
+  color: var(--color-link);
   font-weight: 700;
   letter-spacing: 0.8px;
 }
@@ -772,6 +776,7 @@ POSTS
   border-radius: 300px;
 
   transition: transform 0.25s ease-in-out;
+  text-wrap: balance;
 }
 .theme-white.quote {
   color: var(--og-black);
@@ -893,6 +898,11 @@ POSTS
   border: 10px solid var(--color-dropdown-open);
   margin-right: 3rem;
   margin-left: 3rem;
+}
+.dropdown.theme-white {
+  box-shadow: var(--glow-inset-shadow);
+  border: none;
+  padding: var(--wp-spacing-30) var(--wp-spacing-40) var(--wp-spacing-30) var(--wp-spacing-40);
 }
 .dropdown-summary + .dropdown-content {
   margin-block-start: 1em;
@@ -1407,7 +1417,34 @@ POSTS
   font-family: 'Old Standard TT', serif;
   font-size: var(--wp-font-size-medium);
 }
-
+.theme-scintilla.solution[open] .solution-summary {
+  margin-bottom: 0;
+}
+.theme-scintilla.solution-content {
+  /* background: #fff6; */
+  /* background: linear-gradient(to bottom, #fff0 0%, #fff8 5%); */
+  background: linear-gradient(to bottom, #fff0 0%, #fff8 5%, #fff8 95%, #fff0 100%);
+  padding: var(--wp-spacing-40);
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: visible;
+}
+.theme-scintilla.solution[open] + .spacing-as-p {
+  margin-top: var(--wp-spacing-40);
+}
+.faux {
+  font-family: 'Old Standard TT', serif;
+  font-size: var(--wp-font-size-medium);
+}
+.pt {
+  font-style: italic;
+  font-family: 'Old Standard TT', serif;
+  font-weight: bold; 
+  font-size: var(--wp-font-size-medium);
+}
+.tbe {
+  alignment-baseline: text-before-edge;
+}
 .diagram svg:not(.katex svg) {
   /* border: 10px solid black; */
   max-width: 100%;
@@ -2135,9 +2172,14 @@ Katex formatting
 
 /* OTHER THEMES */
 
-.theme-white:is(.content, .start, .startIt, p, .label, .dropdown-summary, .tab-button) {
+.theme-white:is(.content, .start, .startIt, p, .label, .tab-button) {
   /* font-family: 'Literata' !important; */
   font-family: 'Rosarivo', serif !important;
+}
+.theme-white:is(.start, .startIt) {
+  font-size: inherit;
+  font-style: inherit;
+  font-variant: inherit;
 }
 .theme-white.monospace-results * {
   font-family: 'Datatype', monospace !important;
@@ -2145,11 +2187,27 @@ Katex formatting
 .theme-white:is(h1, h2, h3, .contained-title, .svg-label, .nav-links *, .mini-heading, .mini-heading-2) {
   font-family: 'Xanh Mono', monospace !important;
 }
-.theme-white:is(.askew2, .askew) * {
+.theme-white:is(.askew2, .askew, .quote) * {
   font-family: 'Xanh Mono', monospace !important;
+}
+.theme-white.dropdown-summary {
+  font-family: 'Xanh Mono', monospace !important;
+  font-weight: bold;
+}
+.theme-white.tooltip {
+  font-family: inherit !important;
+}
+.theme-white.tooltip::after {
+  font-family: 'Rosarivo', serif;
 }
 .theme-white.byTheWay-text {
   text-decoration: none;
+  font-style: inherit !important;
+}
+.theme-white.underline-label {
+  text-decoration: inherit;
+  font-family: 'Xanh Mono', monospace;
+  font-weight: bold;
 }
 .theme-white.problem-number {
   font-family: 'Xanh Mono', monospace;
