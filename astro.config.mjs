@@ -74,9 +74,11 @@ export default defineConfig({
         './src/components/text-bits-comps/Tooltip-Formally.astro': [['default', 'Formally']],
         './src/components/text-bits-comps/Tooltip-Key.astro': [['default', 'Key']],
         './src/components/text-bits-comps/Tooltip-Note.astro': [['default', 'Note']],
+        './src/components/text-bits-comps/Tooltip-Try.astro': [['default', 'Try']],
 
         './src/components/text-block-comps/Askew.astro': [['default', 'ASK']],
         './src/components/text-block-comps/Askew2.astro': [['default', 'ASK2']],
+        './src/components/text-block-comps/Big-Idea.astro': [['default', 'BIG']],
         './src/components/text-block-comps/ByTheWay-R.astro': [['default', 'BTW_R']],
         './src/components/text-block-comps/Dropdown.astro': [['default', 'DRP']],
         './src/components/text-block-comps/Dropdown2.astro': [['default', 'DRP2']],

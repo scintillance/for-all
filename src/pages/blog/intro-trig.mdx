@@ -8,7 +8,7 @@ featuredimage: "../images/disc.png"
 
 <WIP />
 
-<XTabber>
+<Tabber>
 <Fragment slot="tab-1"> 
 
 <RightTriangleTrinket>
@@ -174,6 +174,24 @@ Then we can let the <V>sine</V> of angle $x$, or $\V{\sin x}$, denote the ratio 
 In the above example with our $30$-degree right triangle, if we actually built a triangle with those measurements, it would have a <Hy>hypotenuse</Hy> of $\Hy4$. The leg <Op>opposite</Op> the $30\Deg$ angle is the shorter leg, which had length $\Op2$. Therefore we say $\sin (30^\circ) = \dfrac{\Op2}{\Hy4} = \dfrac12$.
 
 Assigning a unique value ($1/2$) to an angle ($30\Deg$) makes sense because if we took _any other right triangle_ with angle $30^\circ$, and looked at the ratio of the length of the <Op>opposite</Op> leg to the length of the <Hy>hypotenuse</Hy>, we'd get $\dfrac12$. <S>_All the right triangles with an angle of $\I{30}$ degrees are similar to each other—i.e., scaled versions of each other._</S> Thus <P>**each angle $\B x$ has exactly one ratio $\B \sin$**</P> associated with it. This is just what we need!
+
+<BIG>
+A **sine** is a **geometric truth**. For a certain angle, it tells us a fact about that angle.
+
+<Fragment slot="and">
+
+Like, the statement "$\sin 15\Deg = \dfrac{\sqrt6-\sqrt2}{4}$" tells us that looking from an angle of $15\Deg$ in a right triangle, the length of the side facing us is exactly $\dfrac{\sqrt6-\sqrt2}{4}$ times the length of the hypotenuse.
+
+Or: if we prop a ladder against a wall (with a $15\Deg$ between ladder and wall), it will cover a horizontal distance that is proportional to its length by a factor of $\dfrac{\sqrt6-\sqrt2}{4}$. 
+
+Or: if we walk 15 degrees up a semicircular hill, whose peak is $1$ unit away horizontally from either edge, then we are standing $\dfrac{\sqrt6-\sqrt2}{4}$ units above the ground.
+
+<Try>For all of these scenarios, think about _why_.</Try>
+
+I could go on. Sine, and all the other trig functions, play a vital role in _all of math_ because they capture something innate to the physical world: the geometry of triangles, angles, and circles (as much the circular clock sitting on your table as an abstract circle made of "imaginary" numbers!).<Note>I think it's fun that the complex roots of the number 1, the _**roots of unity**_, beautifully involve sine and cosine. Here, since $360/24=15$, we can say that the number $z=\cos(15\Deg) + i\sin(15\Deg)$ satisfies $z^{24}=1$. Cool!</Note>
+
+</Fragment>
+</BIG>
 
 That's just 1 angle, though... We can similarly define the <V>cosine</V> of angle x, or $\V{\cos x}$, to be the length ratio of the <Ad>adjacent</Ad> leg over the <Hy>hypotenuse</Hy>.
 
@@ -456,10 +474,14 @@ Let's gut check this new definition. Before, we had sine and cosine ranging betw
 Also, we knew $\sin(t) = \cos(90-t)$. Explain why this is still true visually with our new definitions.
 </PRB>
 
+<SOL>
+Think about traveling $t$ radians around the unit circle (clockwise starting from $(1,0)$ as always). If we travel $-t$ radians, that's traveling _clockwise_, so the angle gets flipped across the x-axis. <Try>Why does this definition of negative angles make sense? <br/><br/> **Hint**: A sensible way to "add" two angles $t_1$ and $t_2$ is to find the point on the unit circle that is $t_1 + t_2$ radians from $(1,0)$. Using that, think about what must happen when you add an angle and the negative of that angle.</Try> 
+</SOL>
+
 
 ### basic trig identities
 
 s
 
 </Fragment>
-</XTabber>
+</Tabber>
