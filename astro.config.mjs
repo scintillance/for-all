@@ -66,6 +66,7 @@ export default defineConfig({
         './src/components/pieces-comps/Diagram-Trans.astro': [['default', 'Diagram_T']],
         './src/components/pieces-comps/Right-Triangle-Trinket.astro': [['default', 'RightTriangleTrinket']],
         './src/components/pieces-comps/Tabber.astro': [['default', 'Tabber']],
+        './src/components/pieces-comps/Tally.astro': [['default', 'Tally']],
         './src/components/pieces-comps/Unit-Circle-Trinket.astro': [['default', 'UnitCircleTrinket']],
         './src/components/pieces-comps/WIP.astro': [['default', 'WIP']],
         './src/components/pieces-comps/XTabber.astro': [['default', 'XTabber']],

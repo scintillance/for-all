@@ -1733,6 +1733,19 @@ POSTS
 .wip-spacer {
   margin-bottom: 200px;
 }
+.feedback {
+  background-image: var(--gradient-shallow-rainbow);
+  color: var(--color-text-vocab);
+  border-top-left-radius: 3em;
+  border-top-right-radius: 3em;
+  padding: .5em 2em;
+  margin: var(--wp-spacing-30) 1em var(--wp-spacing-20) 1em;
+  font-family: 'Instrument Serif';
+  font-size: var(--wp-font-size-large);
+}
+.feedback-details[open] .feedback-summary {
+  display: none;
+}
 
 /*-----------------------------
 HEADER
