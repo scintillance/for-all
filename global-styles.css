@@ -632,7 +632,14 @@ POSTS
     font-size: var(--wp-font-size-xx-large);
   }
 }
-
+.date {
+  margin-top: calc(-1.2 * var(--wp-spacing-20));
+  padding: 0px var(--wp-spacing-50) var(--wp-spacing-20) var(--wp-spacing-50);
+  font-family: "Space Mono", monospace;
+  color: var(--color-title-neue);
+  font-size: var(--wp-font-size-other-medium);
+  letter-spacing: 0.2px;
+}
 .content-wrapper {
   display: grid;
   place-items: center;
@@ -651,6 +658,10 @@ POSTS
   max-width: min(760px, calc(100vw - var(--wp-spacing-20) - var(--wp-spacing-20) - var(--wp-spacing-20)));
   /* display: flex;
   flex-direction: column; */
+}
+.content.journal {
+  font-family: 'Ibarra Real Nova', serif;
+  font-size: var(--wp-font-size-medium);
 }
 .content h3 {
   font-family: "Ibarra Real Nova", serif;
